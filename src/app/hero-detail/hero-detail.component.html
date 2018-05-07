@@ -1,0 +1,24 @@
+<div *ngIf="hero">
+
+  <h2>{{hero.name | uppercase }} Details</h2>
+  <div>
+    <span>id: </span>{{hero.id}}
+  </div>
+  <div fxLayout="column" fxLayoutAlign="start">
+    <label>name:
+      <input [(ngModel)]="hero.name" placeholder="name"/>
+    </label>
+    <label>subtitle:
+      <input [(ngModel)]="hero.subtitle" placeholder="subtitle"/>
+    </label>
+    <label>content:
+      <input [(ngModel)]="hero.content" placeholder="content"/>
+    </label>
+    <label>image URL:
+        <input [(ngModel)]="hero.imgURL" placeholder="URL"/>
+      </label>
+  </div>
+  <button (click)="goBack()">go back</button>
+</div>
+
+

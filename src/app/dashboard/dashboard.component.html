@@ -1,0 +1,40 @@
+<div fxLayout="column">
+  <h3>Top Heroes</h3>
+  <div class="grid grid-pad card-container" >
+    <div *ngFor="let hero of heroes" class="col-" >
+      <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{hero.name}}</mat-card-title>
+            <mat-card-subtitle>{{hero.subtitle}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src={{hero.imgURL}} alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>
+              {{hero.content}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+              <a routerLink="/detail/{{hero.id}}"><button mat-button>Edit</button></a>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+
+  </div>
+
+  <div class="addHero" fxLayout="column" fxLayoutAlign="space-around stretch">
+        
+      <label>name:
+        <input #name placeholder="name"/>
+      </label>
+      <label>subtitle:
+        <input #subtitle placeholder="subtitle"/>
+      </label>
+      <label>content:
+        <input #content placeholder="content"/>
+      </label>
+      <button mat-button (click)="addNewHero(name.value ,subtitle.value , content.value)" >ADD</button>
+  </div>
+</div>
+
