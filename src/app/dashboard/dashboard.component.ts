@@ -24,11 +24,9 @@ export class DashboardComponent implements OnInit {
   addNewHero(name: string , subtitle: string, contnet: string): void {
     this.heroService.addHero(name, subtitle, contnet);
     this.getHeroes();
-    this.openSnackBar('ADD');
-  }
-
-  openSnackBar(action: string) {
-
+    this.snackBar.open('Add Hero', 'Undo', {
+      duration: 1000
+    });
   }
 }
 
