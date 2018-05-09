@@ -3,6 +3,7 @@ import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 import { MatSnackBar} from '@angular/material';
 import { Observable } from 'rxjs/Observable';
+import { AngularFireStorage, AngularFireUploadTask, AngularFireStorageReference } from 'angularfire2/storage';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,8 +12,13 @@ import { Observable } from 'rxjs/Observable';
 })
 export class DashboardComponent implements OnInit {
   heroes: Observable<Hero[]>;
+  task: AngularFireUploadTask;
+  ref: AngularFireStorageReference;
 
-  constructor(private heroService: HeroService, public snackBar: MatSnackBar) { }
+  constructor(private heroService: HeroService,
+              public snackBar: MatSnackBar,
+              private afStrorage: AngularFireStorage
+              ) { }
 
   ngOnInit() {
     this.getHeroes();
@@ -32,6 +38,12 @@ export class DashboardComponent implements OnInit {
 
   deleteHero(id: string) {
     this.heroService.deleteHero(id);
+  }
+
+  upload(event) {
+    const randomId = Math.random().toString(36).substring(2);
+    this.afStrorage.ref(randomId);
+    this.task = this.ref.put(event.target.files[0]);
   }
 }
 

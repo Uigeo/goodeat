@@ -1,10 +1,28 @@
 
 <mat-toolbar color="primary">{{title}}
-<div class="button-row">
-    <a routerLink="/login"><button mat-raised-button>Login</button></a>
-    <a routerLink="/heroes"><button mat-raised-button>Heroes</button></a>
-    <a routerLink="/dashboard"><button mat-raised-button>Dashboard</button></a>
+
+<div *ngIf="auth.authState | async; then authed else guest">
+
+
 </div>
+
+<ng-template #guest>
+        <div class="button-row">
+                <a routerLink="/login"><button mat-raised-button>Login</button></a>
+                <a routerLink="/heroes"><button mat-raised-button>Heroes</button></a>
+                <a routerLink="/dashboard"><button mat-raised-button>Dashboard</button></a>
+            </div>
+</ng-template>
+<ng-template #authed>
+        <div class="button-row">
+                <a routerLink="/dashboard"><button mat-raised-button (click)=logout()>Logout</button></a>
+                <a routerLink="/heroes"><button mat-raised-button>Heroes</button></a>
+                <a routerLink="/dashboard"><button mat-raised-button>Dashboard</button></a>
+                <a routerLink="/mypage"><button mat-raised-button>MyPage</button></a>
+            </div>
+</ng-template>
+
+
 </mat-toolbar>
 <router-outlet></router-outlet>
 <app-messages></app-messages>

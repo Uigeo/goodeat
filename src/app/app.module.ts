@@ -19,7 +19,8 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
+import { AuthService } from './auth.service';
+import { MypageComponent } from './mypage/mypage.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    MypageComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +42,10 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     AppRoutingModule,
     MaterialModule,
     FlexLayoutModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
+    AuthService,
     HeroService,
     MessageService
   ],

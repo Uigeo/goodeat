@@ -1,3 +1,12 @@
-<p>
-  login works!
-</p>
+<div *ngIf="auth.authState | async as user; else showLogin">
+    <h1>Hello {{ user.displayName }}!</h1>
+    <h1>Hello {{ user.email}}!</h1>
+    <h1>Hello {{ user.uid }}!</h1>
+    <h1>Hello {{ user.phoneNumber}}!</h1>
+    <h1>Hello {{ user.phtoURL}}!</h1>
+    <button (click)="oauthLogout()">Logout</button>
+  </div>
+  <ng-template #showLogin>
+    <p>Please login.</p>
+    <button (click)="oauthLogin()">Login with Google</button>
+  </ng-template>
