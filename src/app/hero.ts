@@ -1,7 +1,7 @@
-export class Hero {
-  id: number;
+export interface Hero {
+  id?: string;
   name: string;
   subtitle: string;
   content: string;
-  imgURL: string;
+  URL: string;
 }

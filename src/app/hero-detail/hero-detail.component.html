@@ -2,20 +2,20 @@
 
   <h2>{{hero.name | uppercase }} Details</h2>
   <div>
-    <span>id: </span>{{hero.id}}
+    <span>id: </span>{{id}}
   </div>
-  <div fxLayout="column" fxLayoutAlign="start">
-    <label>name:
-      <input [(ngModel)]="hero.name" placeholder="name"/>
-    </label>
-    <label>subtitle:
-      <input [(ngModel)]="hero.subtitle" placeholder="subtitle"/>
-    </label>
+  <div  class="example-container" fxLayout="column" fxLayoutAlign="start">
+    <mat-form-field>
+      <input [(ngModel)]="hero.name" matInput placeholder="name"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="hero.subtitle"  matInput placeholder="subtitle"/>
+    </mat-form-field>
     <label>content:
       <input [(ngModel)]="hero.content" placeholder="content"/>
     </label>
     <label>image URL:
-        <input [(ngModel)]="hero.imgURL" placeholder="URL"/>
+        <input [(ngModel)]="hero.URL" placeholder="URL"/>
       </label>
   </div>
   <button (click)="goBack()">go back</button>
