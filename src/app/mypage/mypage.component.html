@@ -1,3 +1,47 @@
-<p>
-  mypage works!
-</p>
+
+
+<div *ngIf="auth.user | async">
+  <br>
+    <mat-card>
+        <mat-list>
+            <mat-list-item>User ID: {{user.uid}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Email : {{user.email}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Name : {{user.name}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Nick : {{user.nickname}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Age : {{user.age}}</mat-list-item>
+          </mat-list>
+    </mat-card>
+    <br>
+
+    <mat-form-field hintLabel="Your Nick">
+        <input matInput [(ngModel)]="user.nickname" #nick placeholder="Enter nickname" (blur)="setNick(nick.value)">
+    </mat-form-field>
+    
+      <mat-form-field hintLabel="Your Age">
+          <input matInput [(ngModel)]="user.age" #age placeholder="Enter some input" (blur)="setAge(age.value)">
+      </mat-form-field>
+</div>
+
+<!-- <div class="example-container mat-elevation-z8">
+    <table mat-table #table [dataSource]="dataSource">
+ 
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+  
+     
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef> Time </th>
+        <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div> -->
+  

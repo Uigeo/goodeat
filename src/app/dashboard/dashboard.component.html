@@ -1,5 +1,26 @@
 <div fxLayout="column">
   <h3>Top Heroes</h3>
+
+  <mat-card>
+      <div class="addHero">
+          <form class="example-form" fxLayout="column" fxLayoutAlign="space-around stretch">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="name" #name>
+              </mat-form-field>
+    
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="subtitle" #subtitle>
+                </mat-form-field>
+            
+              <mat-form-field class="example-full-width">
+                <textarea matInput placeholder="content" #content></textarea>
+              </mat-form-field>             
+              <input type="file"/>
+              <button mat-button (click)="addNewHero(name.value ,subtitle.value , content.value)" >ADD</button>
+          </form>   
+      </div>
+  </mat-card>
+
   <div class="grid grid-pad card-container" >
     <div *ngFor="let hero of heroes | async" class="col-" >
       <mat-card class="example-card">
@@ -15,35 +36,15 @@
             </p>
           </mat-card-content>
           <mat-card-actions>
-              <a routerLink="/detail/{{hero.id}}"><button mat-button>Edit</button></a>
+            <button mat-button routerLink="/detail/{{hero.id}}">Edit</button>
             <button mat-button (click)="deleteHero(hero.id)">Delete</button>
+            <button mat-button *ngIf="auth.user | async" (click)="auth.addLikeHero(hero.id, hero.name)" >Like</button>
           </mat-card-actions>
         </mat-card>
       </div>
 
   </div>
 
-  <div class="addHero">
-
-      <form class="example-form" fxLayout="column" fxLayoutAlign="space-around stretch">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="name" #name>
-          </mat-form-field>
-
-          <mat-form-field class="example-full-width">
-              <input matInput placeholder="subtitle" #subtitle>
-            </mat-form-field>
-        
-          <mat-form-field class="example-full-width">
-            <textarea matInput placeholder="content" #content></textarea>
-          </mat-form-field>
-
-          
-          <input type="file"/>
-            
-          <button mat-button (click)="addNewHero(name.value ,subtitle.value , content.value)" >ADD</button>
-      </form>
-      
-  </div>
+  
 </div>
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from '../auth.service';
 import { Observable } from '@firebase/util';
+import { UserService, User } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,20 +10,24 @@ import { Observable } from '@firebase/util';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  auth: AngularFireAuth;
-  constructor(private authService: AuthService) {
-    this.auth = authService.afAuth;
-   }
-
+  users: User[];
+  uid = 'LL' ;
+  constructor(public auth: AuthService, private userService: UserService) {}
   ngOnInit() {
+
   }
 
-  oauthLogin() {
-    this.authService.login();
+  userCheck() {
+    this.uid = 'absdfs';
+    this.auth.afAuth.authState.subscribe(user => this.uid = user.uid);
+    if (this.userService.getUser(this.uid).subscribe(user => user.length === 0) ) {
+      this.userService.getUser(this.uid).subscribe(user => this.users = user.slice(0, user.length));
+      this.userService.addUser(this.users[0].uid, this.users[0].nickname, this.users[0].email);
+    }
   }
 
   oauthLogout() {
-    this.authService.logout();
+    this.auth.logout();
   }
 
 

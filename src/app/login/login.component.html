@@ -1,12 +1,19 @@
-<div *ngIf="auth.authState | async as user; else showLogin">
-    <h1>Hello {{ user.displayName }}!</h1>
-    <h1>Hello {{ user.email}}!</h1>
-    <h1>Hello {{ user.uid }}!</h1>
-    <h1>Hello {{ user.phoneNumber}}!</h1>
-    <h1>Hello {{ user.phtoURL}}!</h1>
-    <button (click)="oauthLogout()">Logout</button>
+
+<div *ngIf="auth.user | async; then authenticated else guest">
+
   </div>
-  <ng-template #showLogin>
-    <p>Please login.</p>
-    <button (click)="oauthLogin()">Login with Google</button>
+  
+  <ng-template #guest>
+    <h3>Howdy, GUEST</h3>
+    <button (click)="auth.googleLogin()"></button>
+      <i class="fa fa-google"></i> Connect Google
+  </ng-template>
+  
+  
+  <ng-template #authenticated>
+    <div *ngIf="auth.user | async as user">
+      <h3>Howdy, {{user.name}}</h3>
+      <p>UID: {{user.uid}}</p>
+      
+    </div>
   </ng-template>

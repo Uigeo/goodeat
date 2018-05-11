@@ -4,6 +4,7 @@ import { HeroService } from '../hero.service';
 import { MatSnackBar} from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireStorage, AngularFireUploadTask, AngularFireStorageReference } from 'angularfire2/storage';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +18,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(private heroService: HeroService,
               public snackBar: MatSnackBar,
-              private afStrorage: AngularFireStorage
+              private afStrorage: AngularFireStorage,
+              public auth: AuthService
               ) { }
 
   ngOnInit() {
@@ -38,6 +40,9 @@ export class DashboardComponent implements OnInit {
 
   deleteHero(id: string) {
     this.heroService.deleteHero(id);
+    this.snackBar.open('Delete Hero', 'Undo', {
+      duration: 1000
+    });
   }
 
   upload(event) {

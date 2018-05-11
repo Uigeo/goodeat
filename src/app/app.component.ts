@@ -8,13 +8,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  auth: AngularFireAuth;
-  constructor(private authService: AuthService) {
-    this.auth = authService.afAuth;
+  constructor(public auth: AuthService) {
+
   }
   title = 'Heroes';
-
-  logout() {
-    this.authService.logout();
-  }
 }
