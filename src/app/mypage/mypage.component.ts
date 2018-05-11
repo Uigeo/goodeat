@@ -16,6 +16,7 @@ export interface LikeHero {
 })
 export class MypageComponent implements OnInit {
   @Input() user: User;
+  panelOpenState = false;
   dataSource: LikeHero[] = [];
   displayedColumns = ['Hero Name', 'Time'];
 

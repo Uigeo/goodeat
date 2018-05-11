@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './hero';
-import { HEROES } from './mock-heroes';
 import { Observable } from 'rxjs/observable';
 import { of } from 'rxjs/observable/of';
 import { MessageService } from './message.service';
@@ -37,9 +36,8 @@ export class HeroService {
     return this.heroDoc.valueChanges();
   }
 
-  addHero(name: string, sub: string, con: string): void {
-    this.messageService.add(`HeroService: hero id=${HEROES.length + 1}`);
-    this.heroCollectionRef.add({name: name, subtitle: sub, content: con, URL: this.defaultURL});
+  addHero(name: string, sub: string, con: string, URL: string): void {
+    this.heroCollectionRef.add({name: name, subtitle: sub, content: con, URL: URL});
   }
 
   deleteHero(id: string) {

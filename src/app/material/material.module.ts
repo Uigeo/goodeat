@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {CdkTableModule} from '@angular/cdk/table';
+import { CdkTableModule } from '@angular/cdk/table';
 import { MatButtonModule,
         MatDatepickerModule,
         MatAutocompleteModule,
@@ -37,6 +37,7 @@ import { MatButtonModule,
 
 @NgModule({
   imports: [
+    CdkTableModule,
     CommonModule,
     MatAutocompleteModule,
     MatButtonModule,

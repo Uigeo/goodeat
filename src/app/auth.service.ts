@@ -31,8 +31,10 @@ export class AuthService {
               private router: Router ) {
       this.user = this.afAuth.authState.switchMap( user => {
         if (user) {
+          console.log('1');
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
+          console.log('2');
           return of(null);
         }
       });
@@ -72,10 +74,14 @@ export class AuthService {
   }
 
   addLikeHero(hid: string, heroName: string) {
-    this.user.subscribe(user => this.userid = user.uid);
+    this.user.subscribe(user =>  this.userid = user.uid);
     this.likeDoc = this.afs.doc<User>(`users/${this.userid}`);
     console.log(this.userid);
-
     this.likeDoc.collection('likes').add({hid: hid, heroName: heroName, date: Date.now()});
   }
+
+  userOn() {
+    this.user.subscribe(user =>  this.userid = user.uid);
+  }
 }
+

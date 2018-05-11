@@ -1,27 +1,25 @@
 
-<mat-toolbar color="primary">{{title}}
+<mat-toolbar class="tool" color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+        <h2>{{title}}</h2>
+        <div *ngIf="auth.user | async; then authed else guest">
 
-<div *ngIf="auth.user | async; then authed else guest">
-
-
-</div>
-
-<ng-template #guest>
-        <div class="button-row">
-                <button mat-raised-button routerLink="/login">Login</button>
-                <button mat-raised-button routerLink="/heroes">Heroes</button>
-                <button mat-raised-button routerLink="/dashboard">Dashboard</button>
-            </div>
-</ng-template>
-<ng-template #authed>
-        <div class="button-row">
-                <a routerLink="/dashboard"><button mat-raised-button (click)=auth.logout()>Logout</button></a>
-                <a routerLink="/heroes"><button mat-raised-button>Heroes</button></a>
-                <a routerLink="/dashboard"><button mat-raised-button>Dashboard</button></a>
-                <a routerLink="/mypage"><button mat-raised-button>MyPage</button></a>
         </div>
-</ng-template>
+
+        <ng-template #guest>
+                <div fxLayout="row" fxLayoutAlign="end center">
+                        <a mat-button routerLink="/login">Login</a>
+                        <a mat-button routerLink="/heroes">Heroes</a>
+                        <a mat-button routerLink="/dashboard">Dashboard</a>
+                </div>
+        </ng-template>
+        <ng-template #authed>
+                <div fxLayout="row" fxLayoutAlign="end center">
+                        <a routerLink="/dashboard" mat-button (click)=auth.logout()>Logout</a>
+                        <a routerLink="/heroes" mat-button>Heroes</a>
+                        <a routerLink="/dashboard" mat-button>Dashboard</a>
+                        <a routerLink="/mypage" mat-button>MyPage</a>
+                </div>
+        </ng-template>
 
 </mat-toolbar>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+<router-outlet class="route"></router-outlet>

@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HeroService } from '../hero.service';
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
+import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from 'angularfire2/storage';
 
 
 @Component({
@@ -14,10 +15,13 @@ import { Observable } from 'rxjs/Observable';
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
   id: string;
+  task: AngularFireUploadTask;
+  random_file_name: string;
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
-    private location: Location
+    private location: Location,
+    private afStorage: AngularFireStorage
   ) {}
 
   ngOnInit() {
@@ -39,4 +43,10 @@ export class HeroDetailComponent implements OnInit {
     this.heroService.updateHero(hero);
   }
 
+  upload(event) {
+    this.random_file_name = Math.random().toString(36).substring(2);
+    this.task = this.afStorage.ref('images/' + this.random_file_name).put(event.target.files[0]);
+    const downloadURL = this.task.downloadURL();
+    downloadURL.subscribe(url => this.hero.URL = url);
+  }
 }

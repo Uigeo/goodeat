@@ -21,6 +21,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './auth.service';
 import { MypageComponent } from './mypage/mypage.component';
+import { HeroTableComponent } from './hero-table/hero-table.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { MypageComponent } from './mypage/mypage.component';
     MessagesComponent,
     DashboardComponent,
     LoginComponent,
-    MypageComponent
+    MypageComponent,
+    HeroTableComponent,
   ],
   imports: [
     BrowserModule,

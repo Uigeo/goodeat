@@ -1,31 +1,56 @@
-<div fxLayout="column">
-  <h3>Top Heroes</h3>
-
-  <mat-card>
-      <div class="addHero">
-          <form class="example-form" fxLayout="column" fxLayoutAlign="space-around stretch">
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="name" #name>
-              </mat-form-field>
+<div class="container" fxLayout="column">
+  <h1>Top Heroes</h1>
+  <br>
+  
+  <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Add New Hero
+          </mat-panel-title>
+          <mat-panel-description>
+            Type new hero information
+          </mat-panel-description>
+        </mat-expansion-panel-header>
     
-              <mat-form-field class="example-full-width">
-                  <input matInput placeholder="subtitle" #subtitle>
+        <div class="addHero">
+            <form class="example-form" fxLayout="column" fxLayoutAlign="space-around stretch">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="name" #name>
                 </mat-form-field>
-            
-              <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="content" #content></textarea>
-              </mat-form-field>             
-              <input type="file"/>
-              <button mat-button (click)="addNewHero(name.value ,subtitle.value , content.value)" >ADD</button>
-          </form>   
-      </div>
-  </mat-card>
+      
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="subtitle" #subtitle>
+                  </mat-form-field>
+              
+                <mat-form-field class="example-full-width">
+                  <textarea matInput placeholder="content" #content></textarea>
+  
+                </mat-form-field> 
+  
+                <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="newURL" name="First" matInput placeholder="Image URL"/>
+                </mat-form-field>
+  
+                <label for="file">File:</label>
+                <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+                
+  
+                <button mat-raised-button (click)="addNewHero(name.value ,subtitle.value , content.value); name.clear" >ADD</button>
+            </form>   
+        </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+      
+  
 
   <div class="grid grid-pad card-container" >
     <div *ngFor="let hero of heroes | async" class="col-" >
       <mat-card class="example-card">
           <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
+            
+            <div ><img mat-card-avatar class="example-header-image" src="{{hero.URL}}"></div>
             <mat-card-title>{{hero.name}}</mat-card-title>
             <mat-card-subtitle>{{hero.subtitle}}</mat-card-subtitle>
           </mat-card-header>
