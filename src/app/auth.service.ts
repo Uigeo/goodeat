@@ -3,12 +3,13 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
 import { Router } from '@angular/router';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { ObservableMedia } from '@angular/flex-layout';
 import 'rxjs/add/operator/switchMap';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { Time } from '@angular/common';
+import { LikeHero } from './hero-table/hero-table.component';
 
 
 export interface User {
@@ -21,10 +22,12 @@ export interface User {
 
 @Injectable()
 export class AuthService {
-
   user: Observable<User>;
+  likes: Observable<LikeHero[]>;
   userid: string;
-  private likeDoc: AngularFirestoreDocument<any>;
+  lo: Location;
+  likeDoc: AngularFirestoreDocument<User>;
+  likesCollection: AngularFirestoreCollection<LikeHero>;
 
   constructor(public afAuth: AngularFireAuth,
               private afs: AngularFirestore,
@@ -32,9 +35,18 @@ export class AuthService {
       this.user = this.afAuth.authState.switchMap( user => {
         if (user) {
           console.log('1');
+          this.userid = user.uid;
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
+          return of(null);
+        }
+      });
+      this.likes = this.afAuth.authState.switchMap( user => {
+        if (user) {
           console.log('2');
+          const docref = this.afs.doc<User>(`users/${user.uid}`);
+          return docref.collection<LikeHero>('likes').valueChanges();
+        } else {
           return of(null);
         }
       });
@@ -74,10 +86,15 @@ export class AuthService {
   }
 
   addLikeHero(hid: string, heroName: string) {
-    this.user.subscribe(user =>  this.userid = user.uid);
-    this.likeDoc = this.afs.doc<User>(`users/${this.userid}`);
-    console.log(this.userid);
+    this.user.subscribe(user =>  {
+      this.userid = user.uid;
+      this.likeDoc = this.afs.doc<User>(`users/${this.userid}`);
     this.likeDoc.collection('likes').add({hid: hid, heroName: heroName, date: Date.now()});
+    });
+  }
+
+  getLikeHero() {
+    return this.likes;
   }
 
   userOn() {

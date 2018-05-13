@@ -31,7 +31,6 @@ export class HeroService {
   }
 
   getHero(id: string): Observable<Hero> {
-    this.messageService.add(`HeroService: hero id=${id}`);
     this.heroDoc = this.db.doc<Hero>('heroes/' + id);
     return this.heroDoc.valueChanges();
   }

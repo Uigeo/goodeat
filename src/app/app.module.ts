@@ -24,6 +24,7 @@ import { MypageComponent } from './mypage/mypage.component';
 import { HeroTableComponent } from './hero-table/hero-table.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,7 @@ import { HeroTableComponent } from './hero-table/hero-table.component';
   providers: [
     AuthService,
     HeroService,
-    MessageService
+    MessageService,
   ],
   bootstrap: [AppComponent]
 })

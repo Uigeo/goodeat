@@ -26,10 +26,6 @@ export class MypageComponent implements OnInit {
     this.auth.user.subscribe(user => this.user = user);
   }
 
-  getLikeHeroes(): void {
-
-  }
-
   ngOnInit() {
     this.getUser();
   }

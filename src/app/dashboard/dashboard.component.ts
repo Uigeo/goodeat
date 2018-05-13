@@ -27,7 +27,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getHeroes();
-    this.auth.userOn();
     this.newURL = defaultURL;
   }
 
