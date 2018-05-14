@@ -1,48 +1,52 @@
 
 <div class="container">
-  <div *ngIf="auth.user | async">
-    <br>
-      <mat-card>
-          <mat-card-title>User Information</mat-card-title>
-          <mat-list>
-              <mat-list-item>User ID : {{user.uid}}</mat-list-item>
-              <mat-divider></mat-divider>
-              <mat-list-item>Email   : {{user.email}}</mat-list-item>
-              <mat-divider></mat-divider>
-              <mat-list-item>Name    : {{user.name}}</mat-list-item>
-              <mat-divider></mat-divider>
-              <mat-list-item>Nick    : {{user.nickname}}</mat-list-item>
-              <mat-divider></mat-divider>
-              <mat-list-item>Age     : {{user.age}}</mat-list-item>
-            </mat-list>
-      </mat-card>
+
+    <mat-tab-group>
+        <mat-tab label="User Info">
+            <div *ngIf="auth.user | async">
+                <br>
+                  <mat-card>
+                      <mat-card-title>User Information</mat-card-title>
+                      <mat-list>
+                          <mat-list-item>User ID : {{user.uid}}</mat-list-item>
+                          <mat-divider></mat-divider>
+                          <mat-list-item>Email   : {{user.email}}</mat-list-item>
+                          <mat-divider></mat-divider>
+                          <mat-list-item>Name    : {{user.name}}</mat-list-item>
+                          <mat-divider></mat-divider>
+                          <mat-list-item>Nick    : {{user.nickname}}</mat-list-item>
+                          <mat-divider></mat-divider>
+                          <mat-list-item>Age     : {{user.age}}</mat-list-item>
+                        </mat-list>
+                  </mat-card>
+                  <br>
+                  <br>
+                  <mat-accordion>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            Personal Data Modification
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            Type your nickname and age
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+                    
+                        <mat-form-field hintLabel="Your Nick">
+                            <input matInput [(ngModel)]="user.nickname" #nick placeholder="Enter nickname" (blur)="setNick(nick.value)">
+                        </mat-form-field>
+                        
+                          <mat-form-field hintLabel="Your Age">
+                              <input matInput [(ngModel)]="user.age" #age placeholder="Enter some input" (blur)="setAge(age.value)">
+                          </mat-form-field>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+              </div>
+        </mat-tab>
+        <mat-tab label="Likes">
+            <app-hero-table></app-hero-table>
+        </mat-tab>
+      </mat-tab-group>
       <br>
       <br>
-      <mat-accordion>
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Personal Data Modification
-              </mat-panel-title>
-              <mat-panel-description>
-                Type your nickname and age
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-        
-            <mat-form-field hintLabel="Your Nick">
-                <input matInput [(ngModel)]="user.nickname" #nick placeholder="Enter nickname" (blur)="setNick(nick.value)">
-            </mat-form-field>
-            
-              <mat-form-field hintLabel="Your Age">
-                  <input matInput [(ngModel)]="user.age" #age placeholder="Enter some input" (blur)="setAge(age.value)">
-              </mat-form-field>
-          </mat-expansion-panel>
-
-        </mat-accordion>
-
-
-  </div>
-  <br>
-  <br>
-  <app-hero-table></app-hero-table>
 </div>

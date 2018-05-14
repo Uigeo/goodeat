@@ -15,9 +15,8 @@ export class HeroService {
     private messageService: MessageService,
     public db: AngularFirestore,
   ) {
-    this.heroCollectionRef = this.db.collection<Hero>('heroes');
+    this.heroCollectionRef = this.db.collection<Hero>('heroes', ref => ref.orderBy('name'));
   }
-  defaultURL = 'https://www.imboldn.com/wp-content/uploads/2018/04/Avengers-InfinityWar-Thanos-01.jpg';
 
   getHeroes(): Observable<Hero[]> {
     this.heroes = this.heroCollectionRef.snapshotChanges().map(actions => {

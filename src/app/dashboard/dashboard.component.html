@@ -1,75 +1,66 @@
 <div class="container" fxLayout="column">
-  <h1>Top Heroes</h1>
+  <h1>Heroes</h1>
   <br>
-  
-  <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Add New Hero
-          </mat-panel-title>
-          <mat-panel-description>
-            Type new hero information
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-    
-        <div class="addHero">
-            <form class="example-form" fxLayout="column" fxLayoutAlign="space-around stretch">
-                <mat-form-field class="example-full-width">
-                  <input matInput placeholder="name" #name>
-                </mat-form-field>
-      
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="subtitle" #subtitle>
+  <mat-tab-group>
+      <mat-tab label="Heroes">
+          <div class="grid grid-pad card-container" >
+              <div *ngFor="let hero of heroes | async" class="col-" >
+                <mat-card class="example-card">
+                    <mat-card-header>
+                      
+                      <div ><img mat-card-avatar class="example-header-image" src="{{hero.URL}}"></div>
+                      <mat-card-title>{{hero.name}}</mat-card-title>
+                      <mat-card-subtitle>{{hero.subtitle}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="{{hero.URL}}" alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                      <p>
+                        {{hero.content}}
+                      </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <button mat-button routerLink="/detail/{{hero.id}}">Edit</button>
+                      <button mat-button (click)="deleteHero(hero.id)">Delete</button>
+                      <button mat-button *ngIf="auth.user | async" (click)="auth.addLikeHero(hero.id, hero.name)" >Like</button>
+                    </mat-card-actions>
+                  </mat-card>
+                </div>
+          
+            </div>
+      </mat-tab>
+      <mat-tab label="Add Hero">
+          <div class="addHero">
+              <form class="example-form" fxLayout="column" fxLayoutAlign="space-around stretch">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="name" #name>
                   </mat-form-field>
-              
-                <mat-form-field class="example-full-width">
-                  <textarea matInput placeholder="content" #content></textarea>
-  
-                </mat-form-field> 
-  
-                <mat-form-field class="example-full-width">
-                    <input [(ngModel)]="newURL" name="First" matInput placeholder="Image URL"/>
-                </mat-form-field>
-  
-                <label for="file">File:</label>
-                <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+        
+                  <mat-form-field class="example-full-width">
+                      <input matInput placeholder="subtitle" #subtitle>
+                    </mat-form-field>
                 
-  
-                <button mat-raised-button (click)="addNewHero(name.value ,subtitle.value , content.value); name.clear" >ADD</button>
-            </form>   
-        </div>
-        </mat-expansion-panel>
-    </mat-accordion>
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="content" #content></textarea>
+    
+                  </mat-form-field> 
+    
+                  <mat-form-field class="example-full-width">
+                      <input [(ngModel)]="newURL" name="First" matInput placeholder="Image URL"/>
+                  </mat-form-field>
+    
+                  <div class="filebox"> 
+                    <label for="ex_file">Upload Image</label> 
+                    <input id="ex_file" type="file" (change)="upload($event)" accept=".png,.jpg" />
+                  </div>
 
-      
-  
+                  <br>
+                  <br>
+                  <button mat-raised-button (click)="addNewHero(name.value ,subtitle.value , content.value); name.clear" >ADD</button>
+                  <br>
+              </form>   
+          </div>
+      </mat-tab>
+  </mat-tab-group>
 
-  <div class="grid grid-pad card-container" >
-    <div *ngFor="let hero of heroes | async" class="col-" >
-      <mat-card class="example-card">
-          <mat-card-header>
-            
-            <div ><img mat-card-avatar class="example-header-image" src="{{hero.URL}}"></div>
-            <mat-card-title>{{hero.name}}</mat-card-title>
-            <mat-card-subtitle>{{hero.subtitle}}</mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image src="{{hero.URL}}" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <p>
-              {{hero.content}}
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button routerLink="/detail/{{hero.id}}">Edit</button>
-            <button mat-button (click)="deleteHero(hero.id)">Delete</button>
-            <button mat-button *ngIf="auth.user | async" (click)="auth.addLikeHero(hero.id, hero.name)" >Like</button>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-
-  </div>
-
-  
 </div>
 

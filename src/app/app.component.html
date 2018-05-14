@@ -8,14 +8,12 @@
         <ng-template #guest>
                 <div fxLayout="row" fxLayoutAlign="end center">
                         <a mat-button routerLink="/login">Login</a>
-                        <a mat-button routerLink="/heroes">Heroes</a>
                         <a mat-button routerLink="/dashboard">Dashboard</a>
                 </div>
         </ng-template>
         <ng-template #authed>
                 <div fxLayout="row" fxLayoutAlign="end center">
                         <a mat-button (click)=auth.logout()>Logout</a>
-                        <a routerLink="/heroes" mat-button>Heroes</a>
                         <a routerLink="/dashboard" mat-button>Dashboard</a>
                         <a routerLink="/mypage" mat-button>MyPage</a>
                 </div>

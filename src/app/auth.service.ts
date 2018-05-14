@@ -45,7 +45,7 @@ export class AuthService {
         if (user) {
           console.log('2');
           const docref = this.afs.doc<User>(`users/${user.uid}`);
-          return docref.collection<LikeHero>('likes').valueChanges();
+          return docref.collection<LikeHero>('likes', ref => ref.orderBy('date')).valueChanges();
         } else {
           return of(null);
         }

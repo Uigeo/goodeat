@@ -12,7 +12,7 @@ import { FirebaseDatabase } from '@firebase/database-types';
   styleUrls: ['./hero-table.component.css']
 })
 export class HeroTableComponent implements OnInit {
-  likeHeros: LikeHero[];
+  likeHeroes: LikeHero[];
   displayedColumns = ['hid', 'heroName', 'date'];
   dataSource: MatTableDataSource<LikeHero>;
   constructor(public auth: AuthService,
@@ -26,8 +26,8 @@ export class HeroTableComponent implements OnInit {
 
   getLikeHeros() {
     this.auth.getLikeHero().subscribe(likes => {
-      this.likeHeros = likes;
-      this.dataSource = new MatTableDataSource<LikeHero>(this.likeHeros);
+      this.likeHeroes = likes;
+      this.dataSource = new MatTableDataSource<LikeHero>(this.likeHeroes);
     });
   }
 }

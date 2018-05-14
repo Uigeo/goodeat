@@ -5,26 +5,33 @@
   <div>
     <span>id: </span>{{id}}
   </div>
+  <br>
+  <hr>
   <div  class="example-container" fxLayout="column" fxLayoutAlign="start">
+    <br>
     <mat-form-field>
       <input [(ngModel)]="hero.name" matInput placeholder="name"/>
     </mat-form-field>
-
+    <br>
     <mat-form-field>
       <input [(ngModel)]="hero.subtitle" matInput placeholder="subtitle"/>
     </mat-form-field>
-
+    <br>
     <mat-form-field>
       <textarea [(ngModel)]="hero.content" matInput placeholder="content"></textarea>
     </mat-form-field>
-
+    <br>
     <mat-form-field>
         <input #img [(ngModel)]="hero.URL" matInput placeholder="URL"/>
   </mat-form-field>
-
-  <label for="file">File:</label>
-    <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+    <br>
   </div>
+
+  <div class="filebox"> 
+      <label for="ex_file">Upload Image</label> 
+      <input id="ex_file" type="file" (change)="upload($event)" accept=".png,.jpg" />
+  </div>
+
   <button mat-button color="accent" (click)="goBack()">Go Back</button>
 
 </mat-card>
