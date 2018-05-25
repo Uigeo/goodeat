@@ -5,3 +5,26 @@ export interface Hero {
   content: string;
   URL: string;
 }
+
+
+export interface User {
+  id: string;
+  name?: string;
+  age?: number;
+  address?: {};
+  email: string;
+  gender: number;
+  
+
+}
+
+export interface Food{
+  name: string;
+  price: number;
+  category: string[];
+  address: {};
+  portion: number;
+  grade: number;
+
+}
+
