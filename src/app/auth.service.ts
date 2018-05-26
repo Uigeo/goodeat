@@ -12,6 +12,9 @@ import { Time } from '@angular/common';
 import { LikeHero } from './hero-table/hero-table.component';
 
 
+
+
+
 export interface User {
   uid: string;
   name: string;
@@ -19,6 +22,7 @@ export interface User {
   email: string;
   age?: number;
 }
+
 
 @Injectable()
 export class AuthService {
@@ -62,6 +66,8 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(provider).then( credential => {this.updateUserDate(credential.user); });
   }
 
+
+  
   private updateUserDate(user) {
     this.afs.firestore.doc(`users/${user.uid}`).get()
       .then(docSnapshot => {

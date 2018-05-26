@@ -1,46 +1,62 @@
 
+   
 <div class="container">
 
     <mat-tab-group>
         <mat-tab label="User Info">
             <div *ngIf="auth.user | async">
                 <br>
+                   
+
                   <mat-card>
                       <mat-card-title>User Information</mat-card-title>
                       <mat-list>
-                          <mat-list-item>User ID : {{user.uid}}</mat-list-item>
-                          <mat-divider></mat-divider>
-                          <mat-list-item>Email   : {{user.email}}</mat-list-item>
-                          <mat-divider></mat-divider>
-                          <mat-list-item>Name    : {{user.name}}</mat-list-item>
-                          <mat-divider></mat-divider>
-                          <mat-list-item>Nick    : {{user.nickname}}</mat-list-item>
-                          <mat-divider></mat-divider>
-                          <mat-list-item>Age     : {{user.age}}</mat-list-item>
-                        </mat-list>
+                            <mat-list-item>User ID: {{user.uid}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Email: {{user.email}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Name: {{user.name}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Nickname     : {{user.nickname}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Age     : {{user.age}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Gender     : {{user.gender}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>Address     : {{user.address}}</mat-list-item>
+                            </mat-list>
                   </mat-card>
                   <br>
                   <br>
+                
                   <mat-accordion>
-                      <mat-expansion-panel>
-                        <mat-expansion-panel-header>
-                          <mat-panel-title>
-                            Personal Data Modification
-                          </mat-panel-title>
-                          <mat-panel-description>
-                            Type your nickname and age
-                          </mat-panel-description>
-                        </mat-expansion-panel-header>
-                    
-                        <mat-form-field hintLabel="Your Nick">
-                            <input matInput [(ngModel)]="user.nickname" #nick placeholder="Enter nickname" (blur)="setNick(nick.value)">
-                        </mat-form-field>
-                        
+                        <mat-expansion-panel>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              개인 정보 수정
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              정보를 입력하세요
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <mat-form-field hintLabel="Your Nick">
+                                  <input matInput [(ngModel)]="user.nickname" #nick placeholder="Enter nickname" (blur)="setNick(nick.value)">
+                              </mat-form-field>
+                              
                           <mat-form-field hintLabel="Your Age">
                               <input matInput [(ngModel)]="user.age" #age placeholder="Enter some input" (blur)="setAge(age.value)">
                           </mat-form-field>
-                      </mat-expansion-panel>
-                    </mat-accordion>
+  
+                          <mat-form-field hintLabel="Your Gender">
+                              <input matInput [(ngModel)]="user.gender" #age placeholder="Enter Gender" (blur)="setGender(gender.value)">
+                          </mat-form-field>
+
+                          <mat-form-field hintLabel="Your Address">
+                              <input matInput [(ngModel)]="user.address" #age placeholder="Enter Address" (blur)="setAddress(address.value)">
+                          </mat-form-field>
+                        </mat-expansion-panel>
+                      </mat-accordion>
+  
               </div>
         </mat-tab>
         <mat-tab label="Likes">

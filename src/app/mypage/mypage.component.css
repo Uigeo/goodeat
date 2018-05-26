@@ -11,3 +11,17 @@
   padding-left: 200px;
   padding-right: 200px;
 }
+
+.list{
+  width:30px;
+
+}
+
+.modi{
+  background-color: rgb(223, 223, 223);
+
+}
+
+.modi.input{
+  width:100%
+}

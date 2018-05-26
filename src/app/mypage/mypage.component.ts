@@ -39,4 +39,18 @@ export class MypageComponent implements OnInit {
     this.user.nickname = nick;
     this.auth.setUserInfo(this.user);
   }
+
+
+  //나중에 채워야함
+  setGender(gender: number) {
+
+  }
+
+  //나중에 채워야함
+  setAddress(address: string){
+
+  }
+
+  
+
 }

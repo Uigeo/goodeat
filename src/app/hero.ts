@@ -8,7 +8,7 @@ export interface Hero {
 
 
 export interface User {
-  id: string;
+  uid: string;
   name?: string;
   age?: number;
   address?: {};
