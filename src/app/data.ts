@@ -14,16 +14,16 @@ export interface User {
   address?: {};
   email: string;
   gender: number;
-  history: History[];  
+  history: History[];
 
 }
 
-export interface History{
+export interface History {
   datetime: string;
   winner: string;
 }
 
-export interface Food{
+export interface Food {
   name: string;
   store: string;
   register: string;
@@ -35,7 +35,7 @@ export interface Food{
   victory: Victory[];
 }
 
-export interface Victory{
+export interface Victory {
   user: string;
   datetime: string;
 }
