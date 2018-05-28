@@ -13,6 +13,11 @@ export interface User {
   age?: number;
   address?: {};
   email: string;
+<<<<<<< HEAD:src/app/data.ts
+=======
+  gender: number;
+  history: History[];
+>>>>>>> d6ce512af8126cf24ba0446fead6cb0bcabd0a13:src/app/data.ts
 
 
 }
@@ -28,12 +33,12 @@ export interface User {
   address?: string;
 }
 
-export interface History{
+export interface History {
   datetime: string;
   winner: string;
 }
 
-export interface Food{
+export interface Food {
   name: string;
   store: string;
   register: string;
@@ -45,7 +50,7 @@ export interface Food{
   victory: Victory[];
 }
 
-export interface Victory{
+export interface Victory {
   user: string;
   datetime: string;
 }
