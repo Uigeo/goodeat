@@ -19,6 +19,14 @@ export class DashboardComponent implements OnInit {
   random_file_name: string;
   @Input() newURL: string;
 
+  rounds = [
+    {value: '4', viewValue: '4강'},
+    {value: '8', viewValue: '8강'},
+    {value: '16', viewValue: '16강'},
+    {value: '32', viewValue: '32강'},
+    
+  ];
+
   constructor(private heroService: HeroService,
               public snackBar: MatSnackBar,
               private afStorage: AngularFireStorage,

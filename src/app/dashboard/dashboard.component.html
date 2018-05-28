@@ -7,31 +7,30 @@
   <section class="example-section">
       <mat-checkbox class="example-margin" [(ngModel)]="meal"> 식 사 </mat-checkbox>
       <div *ngIf="meal">
-        <mat-checkbox>한식</mat-checkbox>
-        <mat-checkbox>중식</mat-checkbox>
-        <mat-checkbox>양식</mat-checkbox>
-        <mat-checkbox>일식</mat-checkbox>
-        <mat-checkbox>분식</mat-checkbox>
+        <mat-checkbox value="korean">한식</mat-checkbox>
+        <mat-checkbox value="chinese">중식</mat-checkbox>
+        <mat-checkbox value="western">양식</mat-checkbox>
+        <mat-checkbox value="japanese"> 일식</mat-checkbox>
+        <mat-checkbox value="snack">분식</mat-checkbox>
       </div>
       <br>
     </section>
     <section class="example-section">
       <mat-checkbox class="example-margin" [(ngModel)]="dessert">디저트</mat-checkbox>
       <div *ngIf="dessert">
-        <mat-checkbox>음료</mat-checkbox>
-        <mat-checkbox>아이스크림</mat-checkbox>
-        <mat-checkbox>케이크</mat-checkbox>
-        <mat-checkbox>분식</mat-checkbox>
-        <mat-checkbox>빵</mat-checkbox>
+        <mat-checkbox value="beverage">음료</mat-checkbox>
+        <mat-checkbox value="ice">아이스크림</mat-checkbox>
+        <mat-checkbox value="cake"> 케이크</mat-checkbox>
+        <mat-checkbox value="bread">빵</mat-checkbox>
       </div>
     </section>
     <section class="example-section">
         <mat-checkbox class="example-margin" [(ngModel)]="people">인원수</mat-checkbox>
         <div *ngIf="people">
-          <mat-checkbox>1인</mat-checkbox>
-          <mat-checkbox>2인</mat-checkbox>
-          <mat-checkbox>3인</mat-checkbox>
-          <mat-checkbox>4인 이상</mat-checkbox>
+          <mat-checkbox value="one">1인</mat-checkbox>
+          <mat-checkbox value="two">2인</mat-checkbox>
+          <mat-checkbox value="three">3인</mat-checkbox>
+          <mat-checkbox value="four">4인 이상</mat-checkbox>
         </div>
       </section>
     <section>
@@ -40,7 +39,7 @@
         max=100000
         min=1000
         step=500
-        
+        value="price"
         >
       </mat-slider>
     <mat-form-field class="example-margin">
@@ -48,7 +47,14 @@
     </mat-form-field>
     
 </section>
-<button mat-raised-button color="primary">Enter</button>
+<mat-form-field>
+    <mat-select placeholder="round">
+      <mat-option *ngFor="let round of rounds" [value]="round.value">
+        {{ round.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+<button mat-raised-button color="primary" (click)="startRound()">Enter</button>
   </mat-card-content>
 </mat-card>
        
