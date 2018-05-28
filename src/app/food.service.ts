@@ -8,6 +8,40 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 @Injectable()
 export class FoodService {
 
-  constructor() { }
+  foodDoc: AngularFirestoreDocument<Food>;
+  foodCollectionRef: AngularFirestoreCollection<Food>;
+  foods: Observable<Food[]>;
 
+  constructor( public db: AngularFirestore ) {
+    this.foodCollectionRef = this.db.collection<Food>('foods', ref => ref.orderBy('name'));
+  }
+
+  getFoods(): Observable<Food[]> {
+    this.foods = this.foodCollectionRef.snapshotChanges().map(actions => {
+      return actions.map(action => {
+        const data = action.payload.doc.data() as Food;
+        const id = action.payload.doc.id;
+        return { id, ...data };
+      });
+    });
+    return this.foods;
+  }
+
+  getFood(id: string): Observable<Food> {
+    this.foodDoc = this.db.doc<Food>('foods/' + id);
+    return this.foodDoc.valueChanges();
+  }
+
+  addFood( food: Food ): void {
+    this.foodCollectionRef.add(food);
+  }
+
+  deleteFood(id: string) {
+    this.foodDoc = this.db.doc<Food>('foods/' + id);
+    this.foodDoc.delete();
+  }
+
+  updateFood(id: string, food: Food) {
+    this.foodCollectionRef.doc(id).update(food);
+  }
 }
