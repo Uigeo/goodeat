@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Hero } from '../hero';
+import { Hero } from '../data';
 import { HeroService } from '../hero.service';
 import { MatSnackBar} from '@angular/material';
 import { Observable } from 'rxjs/Observable';

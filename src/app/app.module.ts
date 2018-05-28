@@ -22,6 +22,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './auth.service';
 import { MypageComponent } from './mypage/mypage.component';
 import { HeroTableComponent } from './hero-table/hero-table.component';
+import { BattleComponent } from './battle/battle.component';
 
 
 
@@ -35,6 +36,7 @@ import { HeroTableComponent } from './hero-table/hero-table.component';
     LoginComponent,
     MypageComponent,
     HeroTableComponent,
+    BattleComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,18 +10,13 @@ import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { Time } from '@angular/common';
 import { LikeHero } from './hero-table/hero-table.component';
+import { User } from './data';
 
 
 
 
 
-export interface User {
-  uid: string;
-  name: string;
-  nickname?: string;
-  email: string;
-  age?: number;
-}
+
 
 
 @Injectable()
@@ -76,6 +71,9 @@ export class AuthService {
           const data: User = {
             uid: user.uid,
             email: user.email,
+            gender: user.gender,
+            address: user.address,
+            age: user.age,
             name: user.displayName
           };
           return userRef.set(data);

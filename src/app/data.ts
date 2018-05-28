@@ -6,16 +6,26 @@ export interface Hero {
   URL: string;
 }
 
-
+/*새로만든것
 export interface User {
-  uid: string;
+  id: string;
   name?: string;
   age?: number;
   address?: {};
   email: string;
-  gender: number;
-  history: History[];  
 
+
+}
+*/
+
+//원래꺼
+export interface User {
+  uid: string;
+  name: string;
+  gender?: string;
+  email: string;
+  age?: number;
+  address?: string;
 }
 
 export interface History{
