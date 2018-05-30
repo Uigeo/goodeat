@@ -1,0 +1,46 @@
+<div class="example-container">
+  <mat-form-field>
+    <input matInput [(ngModel)]="name" placeholder="Food Name">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="price"  placeholder="Price">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="store" placeholder="Store Name">
+  </mat-form-field>
+  <br>
+  <label class="example-margin">카테고리:</label><br>
+  <section class="example-section">
+    <mat-checkbox  [(ngModel)]="c1" class="example-margin">한식</mat-checkbox>
+    <mat-checkbox  [(ngModel)]="c2" class="example-margin">중식</mat-checkbox>
+    <mat-checkbox  [(ngModel)]="c3" class="example-margin">일식</mat-checkbox>
+    <mat-checkbox  [(ngModel)]="c4" class="example-margin">양식</mat-checkbox>
+  </section>
+
+  <mat-form-field>
+    <mat-select [(ngModel)]="portion" placeholder="Select">
+      <mat-option value=1>1인분</mat-option>
+      <mat-option value=2>2인분</mat-option>
+      <mat-option value=3>3인분</mat-option>
+      <mat-option value=4>4인분</mat-option>
+      <mat-option value=5>5인분</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+      <mat-select [(ngModel)]="address" placeholder="Address">
+        <mat-option value="양덕동">양덕동</mat-option>
+        <mat-option value="장량동">장량동</mat-option>
+        <mat-option value="한동대">한동대</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="filebox"> 
+      <label for="ex_file">Upload Image</label> 
+      <input id="ex_file" type="file" (change)="imgUpload($event)" accept=".png,.jpg" />
+    </div>
+
+    <button mat-button color="primary" (click)="addFood()">추가</button>
+</div>

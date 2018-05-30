@@ -67,7 +67,7 @@ export class AuthService {
   }
 
 
-  
+
   private updateUserDate(user) {
     this.afs.firestore.doc(`users/${user.uid}`).get()
       .then(docSnapshot => {

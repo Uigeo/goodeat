@@ -27,11 +27,12 @@ export interface Food {
   store: string;
   register: string;
   price: number;
-  category: string[];
-  address: {};
+  category: {};
+  address?: string;
   portion: number;
-  grade: number;
-  victory: Victory[];
+  grade?: number;
+  imgURL?: string;
+  victory?: Victory[];
 }
 
 export interface Victory {

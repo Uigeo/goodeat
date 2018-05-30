@@ -22,6 +22,9 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './auth.service';
 import { MypageComponent } from './mypage/mypage.component';
 import { HeroTableComponent } from './hero-table/hero-table.component';
+import { FoodTableComponent } from './food-table/food-table.component';
+import { AddFoodComponent } from './add-food/add-food.component';
+import { FoodService } from './food.service';
 
 
 
@@ -35,6 +38,8 @@ import { HeroTableComponent } from './hero-table/hero-table.component';
     LoginComponent,
     MypageComponent,
     HeroTableComponent,
+    FoodTableComponent,
+    AddFoodComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +57,7 @@ import { HeroTableComponent } from './hero-table/hero-table.component';
     AuthService,
     HeroService,
     MessageService,
+    FoodService,
   ],
   bootstrap: [AppComponent]
 })
