@@ -28,6 +28,11 @@ export interface User {
   email: string;
   age?: number;
   address?: string;
+  //daum지도 때 필요함
+  zip? :string;
+  addr?:string;
+  addrEng?:string;
+
 }
 
 export interface History {

@@ -69,12 +69,30 @@ export class MypageComponent implements OnInit {
     this.auth.setUserInfo(this.user);
   }
 
-  //나중에 채워야함
-  setAddress(address: string){
-    this.user.address = address;
+  //다음지도
+  setZip(zip: string){
+    this.user.zip = zip;
     this.auth.setUserInfo(this.user);
   }
 
-  
+  setAddr(addr: string){
+    this.user.addr = addr;
+    this.auth.setUserInfo(this.user);
+  }
+
+  setAddrEng(addrEng: string){
+    this.user.addrEng = addrEng;
+    this.auth.setUserInfo(this.user);
+  }
+  daumAddressOptions =  {
+    class: ['btn', 'btn-primary']
+  };
+   
+  setDaumAddressApi(data){
+
+    this.setZip(data.zip);
+    this.setAddr(data.addr);
+    this.setAddrEng(data.addrEng);
+  }
 
 }

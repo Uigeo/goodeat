@@ -29,6 +29,8 @@ import { HeaderComponent } from './header/header.component';
 import { InheaderComponent } from './inheader/inheader.component';
 import { BattleComponent } from './battle/battle.component';
 
+import { NgDaumAddressModule } from 'ng2-daum-address';
+
 
 
 @NgModule({
@@ -59,6 +61,7 @@ import { BattleComponent } from './battle/battle.component';
     MaterialModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
+    NgDaumAddressModule,
   ],
   providers: [
     AuthService,
