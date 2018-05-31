@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroService } from './hero.service';
-import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MaterialModule } from './material/material.module';
@@ -36,7 +35,6 @@ import { BattleComponent } from './battle/battle.component';
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
-    MessagesComponent,
     DashboardComponent,
     LoginComponent,
     MypageComponent,
