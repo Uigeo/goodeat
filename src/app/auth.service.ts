@@ -13,12 +13,6 @@ import { LikeHero } from './hero-table/hero-table.component';
 import { User } from './data';
 
 
-
-
-
-
-
-
 @Injectable()
 export class AuthService {
   user: Observable<User>;

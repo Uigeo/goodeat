@@ -42,5 +42,7 @@
       <input id="ex_file" type="file" (change)="imgUpload($event)" accept=".png,.jpg" />
     </div>
 
+    <btn-daum-address (result)="setDaumAddressApi($event)" [options]="daumAddressOptions"></btn-daum-address>
+
     <button mat-button color="primary" (click)="addFood()">추가</button>
 </div>

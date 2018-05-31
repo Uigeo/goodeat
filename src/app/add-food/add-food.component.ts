@@ -23,6 +23,9 @@ export class AddFoodComponent implements OnInit {
   c3 = false;
   c4 = false;
   address: string;
+  daumAddressOptions =  {
+    class: ['btn', 'btn-primary']
+  };
 
   constructor( public fs: FoodService, public auth: AuthService, private afStorage: AngularFireStorage ) { }
 
@@ -30,16 +33,6 @@ export class AddFoodComponent implements OnInit {
   }
 
   addFood(): void {
-    console.log(this.name);
-    console.log(this.price);
-    console.log(this.store);
-    console.log(this.portion);
-    console.log(this.img);
-    console.log(this.address);
-    console.log(this.c1);
-    console.log(this.c2);
-    console.log(this.c3);
-    console.log(this.c4);
     this.fs.addFood(
       {
         name: this.name,
@@ -62,5 +55,10 @@ export class AddFoodComponent implements OnInit {
       console.log(url);
       this.img = url;
     });
+  }
+
+  setDaumAddressApi(data) {
+    // 여기로 주소값이 반환
+    console.log(data);
   }
 }
