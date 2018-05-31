@@ -6,8 +6,9 @@ export interface Hero {
   URL: string;
 }
 
+/*새로만든것
 export interface User {
-  uid: string;
+  id: string;
   name?: string;
   age?: number;
   address?: {};
@@ -15,6 +16,18 @@ export interface User {
   gender: number;
   history: History[];
 
+
+}
+*/
+
+
+export interface User {
+  uid: string;
+  name: string;
+  gender?: string;
+  email: string;
+  age?: number;
+  address?: string;
 }
 
 export interface History {

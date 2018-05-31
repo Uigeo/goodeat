@@ -1,59 +1,102 @@
+<form class="option-cards" #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div ngModelGroup="meal">
+    <mat-checkbox ngModel name = "korean" >한식</mat-checkbox>
+    <mat-checkbox ngModel name = "chinese" >중식</mat-checkbox>
+    <mat-checkbox ngModel name = "western" >양식</mat-checkbox>
+    <mat-checkbox ngModel name = "japanese" > 일식</mat-checkbox>
+    
+  </div>
 
+  <div ngModelGroup="people">
+    <mat-checkbox ngModel name="one">1인</mat-checkbox>
+    <mat-checkbox ngModel name="two">2인</mat-checkbox>
+    <mat-checkbox ngModel name="three">3인</mat-checkbox>
+    <mat-checkbox ngModel name="four">4인 이상</mat-checkbox>
+  </div>
+      <section>
+        
+          
+      <mat-form-field class="example-margin">
+          <input matInput type="number" placeholder="최대 가격 입력" ngModel name="price" pattern="[0-9]{4,7}">
+          <mat-hint>1,000원 이상 - 1,000,000 원 미만</mat-hint>
+      </mat-form-field>
+      
+  </section>
+  <!--추후에 4강, 8강, 16강 ...등을 추릴때.
+  <mat-form-field>
+      <mat-select placeholder="round" ngModel name="round">
+        <mat-option *ngFor="let round of rounds" [value]="round.value" >
+          {{ round.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+-->
+  <button mat-raised-button type ="submit" color="primary" >Enter</button>
+</form>
 
-
-<!--check boxes-->
+<!--
+<!-check boxes]
 <mat-card class="option-card">
     <mat-card-content>
-  <section class="example-section">
-      <mat-checkbox class="example-margin" [(ngModel)]="meal"> 식 사 </mat-checkbox>
-      <div *ngIf="meal">
-        <mat-checkbox>한식</mat-checkbox>
-        <mat-checkbox>중식</mat-checkbox>
-        <mat-checkbox>양식</mat-checkbox>
-        <mat-checkbox>일식</mat-checkbox>
-        <mat-checkbox>분식</mat-checkbox>
-      </div>
-      <br>
-    </section>
-    <section class="example-section">
-      <mat-checkbox class="example-margin" [(ngModel)]="dessert">디저트</mat-checkbox>
-      <div *ngIf="dessert">
-        <mat-checkbox>음료</mat-checkbox>
-        <mat-checkbox>아이스크림</mat-checkbox>
-        <mat-checkbox>케이크</mat-checkbox>
-        <mat-checkbox>분식</mat-checkbox>
-        <mat-checkbox>빵</mat-checkbox>
-      </div>
-    </section>
-    <section class="example-section">
-        <mat-checkbox class="example-margin" [(ngModel)]="people">인원수</mat-checkbox>
-        <div *ngIf="people">
-          <mat-checkbox>1인</mat-checkbox>
-          <mat-checkbox>2인</mat-checkbox>
-          <mat-checkbox>3인</mat-checkbox>
-          <mat-checkbox>4인 이상</mat-checkbox>
-        </div>
+      <form>
+        <section class="example-section">
+            <mat-checkbox class="example-margin" [(ngModel)]="meal"> 식 사 </mat-checkbox>
+            <div *ngIf="meal">
+              <mat-checkbox  name = "meal" value="korean" >한식</mat-checkbox>
+              <mat-checkbox   name = "meal" value="chinese" >중식</mat-checkbox>
+              <mat-checkbox   name = "meal"  value="western" >양식</mat-checkbox>
+              <mat-checkbox   name = "meal" value="japanese" > 일식</mat-checkbox>
+              <mat-checkbox  name = "meal"  value="snack" >분식</mat-checkbox>
+            </div>
+            <br>
+          </section>
+          <section class="example-section">
+            <mat-checkbox class="example-margin" [(ngModel)]="dessert">디저트</mat-checkbox>
+            <div *ngIf="dessert">
+              <mat-checkbox value="beverage">음료</mat-checkbox>
+              <mat-checkbox value="ice">아이스크림</mat-checkbox>
+              <mat-checkbox value="cake"> 케이크</mat-checkbox>
+              <mat-checkbox value="bread">빵</mat-checkbox>
+            </div>
+          </section>
+          <section class="example-section">
+              <mat-checkbox class="example-margin" [(ngModel)]="people">인원수</mat-checkbox>
+              <div *ngIf="people">
+                <mat-checkbox value="one">1인</mat-checkbox>
+                <mat-checkbox value="two">2인</mat-checkbox>
+                <mat-checkbox value="three">3인</mat-checkbox>
+                <mat-checkbox value="four">4인 이상</mat-checkbox>
+              </div>
+            </section>
+          <section>
+              <mat-slider
+              [(ngModel)]="value"
+              max=100000
+              min=1000
+              step=500
+              value="price"
+              >
+            </mat-slider>
+          <mat-form-field class="example-margin">
+              <input matInput type="number" placeholder="직접 입력" [(ngModel)]="value">
+          </mat-form-field>
+          
       </section>
-    <section>
-        <mat-slider
-        [(ngModel)]="value"
-        max=100000
-        min=1000
-        step=500
-        
-        >
-      </mat-slider>
-    <mat-form-field class="example-margin">
-        <input matInput type="number" placeholder="직접 입력" [(ngModel)]="value">
-      </mat-form-field>
-    
-</section>
-      
+      <mat-form-field>
+          <mat-select placeholder="round">
+            <mat-option *ngFor="let round of rounds" [value]="round.value">
+              {{ round.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="startRound()" routerLink="/battle">Enter</button>
+    </form>
   </mat-card-content>
 </mat-card>
        
 
-    
+-->
   
  
     

@@ -1,9 +1,10 @@
 import { Component, OnInit,  ViewChild } from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
-import { AuthService, User } from '../auth.service';
+import { AuthService } from '../auth.service';
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { FirebaseDatabase } from '@firebase/database-types';
+import { User } from '../data'
 
 
 @Component({

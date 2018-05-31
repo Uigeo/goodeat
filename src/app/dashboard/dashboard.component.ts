@@ -5,6 +5,7 @@ import { MatSnackBar} from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireStorage, AngularFireUploadTask, AngularFireStorageReference } from 'angularfire2/storage';
 import { AuthService } from '../auth.service';
+import { NgForm } from '@angular/forms'
 
 const defaultURL = 'https://material.angular.io/assets/img/examples/shiba2.jpg';
 @Component({
@@ -18,6 +19,28 @@ export class DashboardComponent implements OnInit {
   task: AngularFireUploadTask;
   random_file_name: string;
   @Input() newURL: string;
+
+  //값 넘길때 사용
+
+  price: number;
+  round: number;
+
+  
+
+
+
+
+
+
+
+
+  rounds = [
+    {value: '4', viewValue: '4강'},
+    {value: '8', viewValue: '8강'},
+    {value: '16', viewValue: '16강'},
+    {value: '32', viewValue: '32강'},
+    
+  ];
 
   constructor(private heroService: HeroService,
               public snackBar: MatSnackBar,
@@ -56,5 +79,29 @@ export class DashboardComponent implements OnInit {
     const downloadURL = this.task.downloadURL();
     downloadURL.subscribe(url => this.newURL = url);
   }
+
+
+  startRound(){
+    console.log("111");
+
+
+  }
+
+
+  onSubmit(f : NgForm){
+    console.log(f);
+    
+    console.log(f.value.meal);
+    console.log(f.value.people);
+    console.log(f.value.price);
+    
+    
+    
+    
+
+
+  }
+
 }
+
 

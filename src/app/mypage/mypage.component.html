@@ -1,13 +1,11 @@
 
    
 <div class="container">
-
+        
     <mat-tab-group>
         <mat-tab label="User Info">
             <div *ngIf="auth.user | async">
                 <br>
-                   
-
                   <mat-card>
                       <mat-card-title>User Information</mat-card-title>
                       <mat-list>
@@ -17,9 +15,7 @@
                             <mat-divider></mat-divider>
                             <mat-list-item>Name: {{user.name}}</mat-list-item>
                             <mat-divider></mat-divider>
-                            <mat-list-item>Nickname     : {{user.nickname}}</mat-list-item>
-                            <mat-divider></mat-divider>
-                            <mat-list-item>Age     : {{user.age}}</mat-list-item>
+                            <mat-list-item>Age     : {{2018-user.age+1}}</mat-list-item>
                             <mat-divider></mat-divider>
                             <mat-list-item>Gender     : {{user.gender}}</mat-list-item>
                             <mat-divider></mat-divider>
@@ -28,7 +24,7 @@
                   </mat-card>
                   <br>
                   <br>
-                
+            
                   <mat-accordion>
                         <mat-expansion-panel>
                           <mat-expansion-panel-header>
@@ -38,24 +34,34 @@
                             <mat-panel-description>
                               정보를 입력하세요
                             </mat-panel-description>
-                          </mat-expansion-panel-header>
-                          <mat-form-field hintLabel="Your Nick">
-                                  <input matInput [(ngModel)]="user.nickname" #nick placeholder="Enter nickname" (blur)="setNick(nick.value)">
-                              </mat-form-field>
-                              
-                          <mat-form-field hintLabel="Your Age">
-                              <input matInput [(ngModel)]="user.age" #age placeholder="Enter some input" (blur)="setAge(age.value)">
+                        </mat-expansion-panel-header>
+                        
+                          <mat-form-field>
+                            <mat-select placeholder="age">
+                              <mat-option *ngFor="let age of ages" [value]="age.value" (blur)="setAge(age.value)">
+                                {{ age.viewValue }}
+                              </mat-option>
+                            </mat-select>
                           </mat-form-field>
-  
-                          <mat-form-field hintLabel="Your Gender">
-                              <input matInput [(ngModel)]="user.gender" #age placeholder="Enter Gender" (blur)="setGender(gender.value)">
+                          
+                          <mat-form-field>
+                            <mat-select placeholder="gender">
+                              <mat-option *ngFor="let gender of genders" [value]="gender.value" (blur)="setGender(gender.value)">
+                                {{ gender.viewValue }}
+                              </mat-option>
+                            </mat-select>
                           </mat-form-field>
 
-                          <mat-form-field hintLabel="Your Address">
-                              <input matInput [(ngModel)]="user.address" #age placeholder="Enter Address" (blur)="setAddress(address.value)">
-                          </mat-form-field>
+                            <mat-form-field>
+                                <mat-select placeholder="address">
+                                <mat-option *ngFor="let address of addresses" [value]="address.value"  (blur)="setAddress(address.value)">
+                                    {{ address.viewValue }}
+                                </mat-option>
+                                </mat-select>
+                            </mat-form-field>
                         </mat-expansion-panel>
-                      </mat-accordion>
+
+                    </mat-accordion>
   
               </div>
         </mat-tab>

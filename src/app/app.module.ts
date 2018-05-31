@@ -8,7 +8,6 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroService } from './hero.service';
 import { MessagesComponent } from './messages/messages.component';
-import { MessageService } from './message.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MaterialModule } from './material/material.module';
@@ -28,6 +27,7 @@ import { FoodService } from './food.service';
 import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './header/header.component';
 import { InheaderComponent } from './inheader/inheader.component';
+import { BattleComponent } from './battle/battle.component';
 
 
 
@@ -46,6 +46,7 @@ import { InheaderComponent } from './inheader/inheader.component';
     MainComponent,
     HeaderComponent,
     InheaderComponent,
+    BattleComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +63,6 @@ import { InheaderComponent } from './inheader/inheader.component';
   providers: [
     AuthService,
     HeroService,
-    MessageService,
     FoodService,
   ],
   bootstrap: [AppComponent]
