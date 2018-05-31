@@ -20,6 +20,10 @@
 .versus{
     position: absolute;
     max-width: 15%;
+}
 
-
+.round-banner{
+  font-size : 4em;
+  
+  color : #e03b3b;
 }
