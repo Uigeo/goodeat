@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Hero } from './data';
 import { Observable } from 'rxjs/observable';
 import { of } from 'rxjs/observable/of';
-import { MessageService } from './message.service';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 
 @Injectable()
@@ -12,7 +11,6 @@ export class HeroService {
   heroes: Observable<Hero[]>;
 
   constructor(
-    private messageService: MessageService,
     public db: AngularFirestore,
   ) {
     this.heroCollectionRef = this.db.collection<Hero>('heroes', ref => ref.orderBy('name'));
