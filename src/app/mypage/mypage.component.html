@@ -15,12 +15,12 @@
                             <mat-divider></mat-divider>
                             <mat-list-item>Name: {{user.name}}</mat-list-item>
                             <mat-divider></mat-divider>
-                            <mat-list-item>Age     : {{2018-user.age+1}}</mat-list-item>
-                            <mat-divider></mat-divider>
                             <mat-list-item>Gender     : {{user.gender}}</mat-list-item>
                             <mat-divider></mat-divider>
+                            <mat-list-item>Birth     : {{user.birth | date: 'yyyy/ MM/ dd'}}</mat-list-item>
+                            <mat-divider></mat-divider>
                             <mat-list-item>Address     : {{user.addr}}</mat-list-item>
-                            </mat-list>
+                          </mat-list>
                   </mat-card>
                   <br>
                   <br>
@@ -32,18 +32,10 @@
                               개인 정보 수정
                             </mat-panel-title>
                             <mat-panel-description>
-                              정보를 입력하세요
+                              
                             </mat-panel-description>
                         </mat-expansion-panel-header>
-                        
-                          <mat-form-field>
-                            <mat-select placeholder="age">
-                              <mat-option *ngFor="let age of ages" [value]="age.value" (blur)="setAge(age.value)">
-                                {{ age.viewValue }}
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-                          
+
                           <mat-form-field>
                             <mat-select placeholder="gender">
                               <mat-option *ngFor="let gender of genders" [value]="gender.value" (blur)="setGender(gender.value)">
@@ -51,16 +43,27 @@
                               </mat-option>
                             </mat-select>
                           </mat-form-field>
+                          <br>
 
-                            <mat-form-field>
-                                <mat-select placeholder="address">
-                                <mat-option *ngFor="let address of addresses" [value]="address.value"  (blur)="setAddress(address.value)">
-                                    {{ address.viewValue }}
-                                </mat-option>
-                                </mat-select>
-                            </mat-form-field>
+                          <mat-form-field>
+                              <input matInput ngModel (dateChange)="setBirth($event.value)" [matDatepicker]="picker" placeholder="Choose a Birth Date">
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker  ></mat-datepicker>
+                          </mat-form-field>
+                          <br><br>
+
+                          <label>주소 검색</label>
+                          <btn-daum-address (result)="setDaumAddressApi($event)" [options]="daumAddressOptions"></btn-daum-address>
+                          <br>
+
                         </mat-expansion-panel>
-                        <btn-daum-address (result)="setDaumAddressApi($event)" [options]="daumAddressOptions"></btn-daum-address>
+
+                      
+                     
+                          
+                    
+                       
+
 
                     </mat-accordion>
   

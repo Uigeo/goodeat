@@ -72,9 +72,14 @@ export class AuthService {
             uid: user.uid,
             email: user.email,
             gender: user.gender,
-            address: user.address,
+            
             age: user.age,
-            name: user.displayName
+            name: user.displayName,
+            zip: user.zip,
+            addr: user.addr,
+            addrEng: user.addrEng,
+            birth: user.birth,
+
           };
           return userRef.set(data);
         }
