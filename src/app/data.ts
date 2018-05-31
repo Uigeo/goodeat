@@ -13,11 +13,8 @@ export interface User {
   age?: number;
   address?: {};
   email: string;
-<<<<<<< HEAD:src/app/data.ts
-=======
   gender: number;
   history: History[];
->>>>>>> d6ce512af8126cf24ba0446fead6cb0bcabd0a13:src/app/data.ts
 
 
 }
@@ -47,6 +44,7 @@ export interface Food {
   address: {};
   portion: number;
   grade: number;
+  imgURL?: string;
   victory: Victory[];
 }
 
