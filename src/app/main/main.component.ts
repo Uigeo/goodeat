@@ -6,9 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
+  ismain = window.location.href.search('main') !== -1;
   constructor() { }
-
   ngOnInit() {
   }
 

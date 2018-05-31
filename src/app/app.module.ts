@@ -7,7 +7,10 @@ import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroService } from './hero.service';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 767ee4368a5824123eb8fe1e633f0ac1672643d0
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MaterialModule } from './material/material.module';
@@ -38,7 +41,10 @@ import { NgDaumAddressModule } from 'ng2-daum-address';
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
+<<<<<<< HEAD
     
+=======
+>>>>>>> 767ee4368a5824123eb8fe1e633f0ac1672643d0
     DashboardComponent,
     LoginComponent,
     MypageComponent,

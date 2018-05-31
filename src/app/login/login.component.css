@@ -1,10 +1,16 @@
 
   .container{
-    padding: 10px 230px 10px 230px;
+  
+    background-color: #cccccc;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url("../../assets/image/food.jpg"); 
+    min-height: 800px;
+
   }
 
   .login{
     height: 300px;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.932);
   }
 
   h1{
