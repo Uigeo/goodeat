@@ -25,6 +25,9 @@ import { HeroTableComponent } from './hero-table/hero-table.component';
 import { FoodTableComponent } from './food-table/food-table.component';
 import { AddFoodComponent } from './add-food/add-food.component';
 import { FoodService } from './food.service';
+import { MainComponent } from './main/main.component';
+import { HeaderComponent } from './header/header.component';
+import { InheaderComponent } from './inheader/inheader.component';
 
 
 
@@ -40,6 +43,9 @@ import { FoodService } from './food.service';
     HeroTableComponent,
     FoodTableComponent,
     AddFoodComponent,
+    MainComponent,
+    HeaderComponent,
+    InheaderComponent,
   ],
   imports: [
     BrowserModule,

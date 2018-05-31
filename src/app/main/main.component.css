@@ -1,0 +1,44 @@
+.container {
+    background-color: #cccccc;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../assets/image/foods.jpg"); 
+    min-height: 800px;
+
+    /* background-color: rgb(45, 107, 126); */
+}
+
+#background {
+    
+    
+    color: white;
+    padding-right: 300px;
+    position: relative;
+}
+
+h1 {
+    font-size: 90px;
+    margin: 10px 10px 10px 10px;
+    color: white;
+}
+
+h3 {
+    color: white;
+    margin-top: 0px;
+}
+
+.maintxt{
+    height: 380px;
+    margin-left: 200px; 
+    margin-right: 100px; 
+}
+
+.stamp{
+    height: 170px;
+}
+
+.arrow{
+    position: absolute;
+    height: 110px;
+    top: 90px;
+    right: 300px;
+}
+

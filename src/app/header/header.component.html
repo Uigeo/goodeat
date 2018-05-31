@@ -1,0 +1,24 @@
+<div fxLayout="row" fxLayoutAlign="space-evenly center" >
+    <div class="tool"  fxLayout="row" fxLayoutAlign="space-around stretch" >
+            <img src="../assets/image/logo_B.png" class="logimg" srcset="">
+            
+            <div *ngIf="auth.user | async; then authed else guest">
+    
+            </div>
+            
+            <ng-template #guest>
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                            <a mat-button routerLink="/login"><i class="material-icons">account_box</i></a>
+                    </div>
+            </ng-template>
+            <ng-template #authed>
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                            <a mat-button (click)=auth.logout()>Logout</a>
+                            <a routerLink="/foods" mat-button>Foods</a>
+                            <a routerLink="/mypage" mat-button>MyPage</a>
+                    </div>
+            </ng-template>
+    </div>
+</div>
+
+

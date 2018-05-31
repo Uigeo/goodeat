@@ -8,8 +8,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  ismain = window.location.href.search('main');
   constructor(public auth: AuthService) {
 
   }
-  title = 'GOODEAT';
+  title = '오늘 뭐 먹지?';
 }

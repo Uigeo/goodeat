@@ -1,24 +1,3 @@
-
-<mat-toolbar class="tool" color="primary" fxLayout="row" fxLayoutAlign="space-between center">
-        <h2>{{title}}</h2>
-        <div *ngIf="auth.user | async; then authed else guest">
-
-        </div>
-
-        <ng-template #guest>
-                <div fxLayout="row" fxLayoutAlign="end center">
-                        <a mat-button routerLink="/login">Login</a>
-                        <a mat-button routerLink="/dashboard">Dashboard</a>
-                </div>
-        </ng-template>
-        <ng-template #authed>
-                <div fxLayout="row" fxLayoutAlign="end center">
-                        <a mat-button (click)=auth.logout()>Logout</a>
-                        <a routerLink="/dashboard" mat-button>Dashboard</a>
-                        <a routerLink="/foods" mat-button>Foods</a>
-                        <a routerLink="/mypage" mat-button>MyPage</a>
-                </div>
-        </ng-template>
-
-</mat-toolbar>
+<app-inheader></app-inheader>
+<app-header></app-header>
 <router-outlet class="route"></router-outlet>

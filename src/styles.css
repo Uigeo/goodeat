@@ -17,6 +17,7 @@ body {
 body, input[text], button {
   color: #888;
   font-family: Cambria, Georgia;
+  background-color: rgb(252, 252, 252);
 }
 a {
   cursor: pointer;
