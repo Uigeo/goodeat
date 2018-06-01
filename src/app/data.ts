@@ -27,7 +27,13 @@ export interface User {
   gender?: string;
   email: string;
   age?: number;
-  address?: string;
+  //daum지도 때 필요함
+  zip? :string;
+  addr?:string;
+  addrEng?:string;
+  birth?: string;
+  today?: any;
+
 }
 
 export interface History {
