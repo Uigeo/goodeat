@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/observable';
 import { of } from 'rxjs/observable/of';
-<<<<<<< HEAD
-
-=======
->>>>>>> 767ee4368a5824123eb8fe1e633f0ac1672643d0
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Food } from './data';
 
@@ -34,7 +30,6 @@ export class FoodService {
   getMyFood(uid: string): Observable<Food[]> {
     console.log(uid);
     const collection = this.db.collection<Food>('foods', ref => ref.where('register', '==', uid));
-    console.log("Hey");
     this.foods = collection.snapshotChanges().map(actions => {
       return actions.map(action => {
         const data = action.payload.doc.data() as Food;
