@@ -27,7 +27,8 @@ import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './header/header.component';
 import { InheaderComponent } from './inheader/inheader.component';
 import { BattleComponent } from './battle/battle.component';
-
+import { NgDaumAddressModule } from 'ng2-daum-address';
+import { MyfoodTableComponent } from './myfood-table/myfood-table.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { BattleComponent } from './battle/battle.component';
     HeaderComponent,
     InheaderComponent,
     BattleComponent,
+    MyfoodTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +59,7 @@ import { BattleComponent } from './battle/battle.component';
     MaterialModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
+    NgDaumAddressModule
   ],
   providers: [
     AuthService,

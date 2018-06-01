@@ -27,12 +27,27 @@ export class FoodService {
     return this.foods;
   }
 
+  getMyFood(uid: string): Observable<Food[]> {
+    console.log(uid);
+    const collection = this.db.collection<Food>('foods', ref => ref.where('register', '==', uid));
+    console.log("Hey");
+    this.foods = collection.snapshotChanges().map(actions => {
+      return actions.map(action => {
+        const data = action.payload.doc.data() as Food;
+        const id = action.payload.doc.id;
+        return { id, ...data };
+      });
+    });
+    return this.foods;
+  }
+
   getFood(id: string): Observable<Food> {
     this.foodDoc = this.db.doc<Food>('foods/' + id);
     return this.foodDoc.valueChanges();
   }
 
   addFood( food: Food ): void {
+    console.log('add Food');
     this.foodCollectionRef.add(food);
   }
 

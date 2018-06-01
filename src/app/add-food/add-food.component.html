@@ -1,4 +1,9 @@
 <div class="example-container">
+  <br>
+  <br>
+  <br>
+  <br>
+  
   <mat-form-field>
     <input matInput [(ngModel)]="name" placeholder="Food Name">
   </mat-form-field>
@@ -29,20 +34,14 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
-      <mat-select [(ngModel)]="address" placeholder="Address">
-        <mat-option value="양덕동">양덕동</mat-option>
-        <mat-option value="장량동">장량동</mat-option>
-        <mat-option value="한동대">한동대</mat-option>
-      </mat-select>
-    </mat-form-field>
+  <btn-daum-address (result)="setDaumAddressApi($event)" [options]="daumAddressOptions"></btn-daum-address>
 
     <div class="filebox"> 
       <label for="ex_file">Upload Image</label> 
       <input id="ex_file" type="file" (change)="imgUpload($event)" accept=".png,.jpg" />
     </div>
 
-    <btn-daum-address (result)="setDaumAddressApi($event)" [options]="daumAddressOptions"></btn-daum-address>
+    
 
     <button mat-button color="primary" (click)="addFood()">추가</button>
 </div>

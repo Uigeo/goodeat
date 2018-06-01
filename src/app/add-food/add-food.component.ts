@@ -18,11 +18,8 @@ export class AddFoodComponent implements OnInit {
   store: string;
   img: string;
   portion: number;
-  c1 = false;
-  c2 = false;
-  c3 = false;
-  c4 = false;
-  address: string;
+  c1 = false; c2 = false; c3 = false; c4 = false;
+  address: any;
   daumAddressOptions =  {
     class: ['btn', 'btn-primary']
   };
@@ -42,7 +39,8 @@ export class AddFoodComponent implements OnInit {
         category: {Kr: this.c1, Ch: this.c2, Jp: this.c3, Ws: this.c4},
         address: this.address,
         store: this.store,
-        register: this.auth.userid
+        register: this.auth.userid,
+        victory: []
       }
     );
   }
@@ -58,7 +56,7 @@ export class AddFoodComponent implements OnInit {
   }
 
   setDaumAddressApi(data) {
-    // 여기로 주소값이 반환
+    this.address = data;
     console.log(data);
   }
 }

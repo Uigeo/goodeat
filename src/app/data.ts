@@ -41,7 +41,7 @@ export interface Food {
   register: string;
   price: number;
   category: {};
-  address?: string;
+  address?: any;
   portion: number;
   grade?: number;
   imgURL?: string;

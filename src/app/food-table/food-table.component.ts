@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Food } from '../data';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { AuthService } from '../auth.service';
@@ -11,7 +11,7 @@ import { FoodService } from '../food.service';
   styleUrls: ['./food-table.component.css']
 })
 
-export class FoodTableComponent implements OnInit {
+export class FoodTableComponent implements AfterViewInit {
   displayedColumns = ['name', 'price', 'store', 'category', 'victory'];
   dataSource: MatTableDataSource<Food>;
   foods: Food[];
@@ -20,6 +20,13 @@ export class FoodTableComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(public auth: AuthService, public fs: FoodService, private afs: AngularFirestore) {
+    this.fs.getFoods().subscribe(foods => {
+      this.foods = foods;
+      this.dataSource = new MatTableDataSource<Food>(this.foods);
+      console.log('Hello');
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
 
   getFoods(): void {
@@ -29,14 +36,9 @@ export class FoodTableComponent implements OnInit {
     });
   }
 
-    /**
-   * Set the paginator and sort after the view init since this component will
-   * be able to query its view for the initialized paginator and sort.
-   */
-  // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
   }
 
   applyFilter(filterValue: string) {
@@ -45,8 +47,6 @@ export class FoodTableComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
-  ngOnInit() {
-    this.getFoods();
-  }
+
 }
 
