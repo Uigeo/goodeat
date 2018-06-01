@@ -12,7 +12,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class MyfoodTableComponent implements OnInit {
 
-  displayedColumns = ['name', 'price', 'store', 'category', 'victory'];
+  displayedColumns = ['name', 'price', 'store', 'category', 'victory', 'detail'];
   dataSource: MatTableDataSource<Food>;
   foods: Food[];
 

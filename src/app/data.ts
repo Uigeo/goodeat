@@ -28,9 +28,9 @@ export interface User {
   email: string;
   age?: number;
   //daum지도 때 필요함
-  zip? :string;
-  addr?:string;
-  addrEng?:string;
+  zip?: string;
+  addr?: string;
+  addrEng?: string;
   birth?: string;
   today?: any;
 

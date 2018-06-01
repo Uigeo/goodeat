@@ -1,0 +1,62 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>카테고리</ng-template>
+      <div fxLayout="column" fxLayoutAlign="center stretch" >
+      <mat-form-field>
+        <input  matInput hidden name="한식" formControlName="firstCtrl">
+        <section class="example-section">
+        <mat-checkbox formControlName="firstCtrl" required >한식</mat-checkbox>
+        <mat-checkbox formControlName="firstCtrl" required >중식</mat-checkbox>
+        <mat-checkbox formControlName="firstCtrl" required>양식</mat-checkbox>
+        <mat-checkbox formControlName="firstCtrl" required>일식</mat-checkbox>
+      </section>
+      </mat-form-field>
+    </div>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>가격</ng-template>
+      <div fxLayout="column" fxLayoutAlign="center stretch" >
+      <mat-form-field>
+        <input matInput placeholder="MAX" formControlName="secondCtrl" required>
+      </mat-form-field>
+    </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>인원</ng-template>
+        <div fxLayout="column" fxLayoutAlign="center stretch" >
+        <mat-form-field>
+            <mat-select placeholder="Location" formControlName="thirdCtrl" required>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{ food.viewValue }}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
+      </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are ready to battle?
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button (click)="stepper.reset()">Start</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

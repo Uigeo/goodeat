@@ -1,3 +1,20 @@
-<p>
-  food-detail works!
-</p>
+
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{food.name}}</mat-card-title>
+      <mat-card-subtitle>{{food.category}}원</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src='{{food.imgURL}}' alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        Price : {{food.price}}<br>
+        Store : {{food.store}}<br>
+        Victory : {{food.victory.length}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="onNoClick()" mat-button>Close</button>
+      <button mat-button>Edit</button>
+    </mat-card-actions>
+  </mat-card>

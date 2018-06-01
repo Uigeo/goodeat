@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -31,6 +31,7 @@ import { BattleComponent } from './battle/battle.component';
 import { NgDaumAddressModule } from 'ng2-daum-address';
 import { MyfoodTableComponent } from './myfood-table/myfood-table.component';
 import { FoodDetailComponent } from './food-detail/food-detail.component';
+import { BattleSettingComponent } from './battle-setting/battle-setting.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { FoodDetailComponent } from './food-detail/food-detail.component';
     BattleComponent,
     MyfoodTableComponent,
     FoodDetailComponent,
+    BattleSettingComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import { FoodDetailComponent } from './food-detail/food-detail.component';
     MaterialModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
-    NgDaumAddressModule
+    NgDaumAddressModule,
+    ReactiveFormsModule,
   ],
   providers: [
     AuthService,

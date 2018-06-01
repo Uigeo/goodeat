@@ -10,11 +10,13 @@ import { FoodTableComponent } from './food-table/food-table.component';
 import { AddFoodComponent } from './add-food/add-food.component';
 import { MainComponent } from './main/main.component';
 import { MyfoodTableComponent } from './myfood-table/myfood-table.component';
+import { BattleSettingComponent } from './battle-setting/battle-setting.component';
+import { FoodDetailComponent } from './food-detail/food-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'detail/:id', component: HeroDetailComponent },
+  { path: 'detail/:id', component: FoodDetailComponent },
   { path: 'heroes', component: HeroesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'mypage', component: MypageComponent },
@@ -22,7 +24,8 @@ const routes: Routes = [
   { path: 'addfood', component: AddFoodComponent},
   { path: 'main', component: MainComponent},
   { path: 'battle', component: BattleComponent},
-  { path: 'myfood', component: MyfoodTableComponent}
+  { path: 'myfood', component: MyfoodTableComponent},
+  { path: 'battleset', component: BattleSettingComponent}
 ];
 
 @NgModule({

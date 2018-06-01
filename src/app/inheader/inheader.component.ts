@@ -3,6 +3,7 @@ import { AuthService } from '../auth.service';
 import { AddFoodComponent } from '../add-food/add-food.component';
 import { MatDialog } from '@angular/material';
 import { FoodTableComponent } from '../food-table/food-table.component';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-inheader',
@@ -29,6 +30,16 @@ export class InheaderComponent implements OnInit {
   openFoodsDialog(): void {
     const dialogRef = this.dialog.open(FoodTableComponent, {
       width: '800px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  openLoginDialog(): void {
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width: '600px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

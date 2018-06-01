@@ -31,6 +31,7 @@
     "material-design-icons": "^3.0.1",
     "ng2-daum-address": "^1.1.4",
     "rxjs": "^5.5.6",
+    "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

@@ -4,6 +4,8 @@ import { MatTableDataSource, MatPaginator, MatSort, MatDialogRef, MAT_DIALOG_DAT
 import { AuthService } from '../auth.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { FoodService } from '../food.service';
+import { FoodDetailComponent } from '../food-detail/food-detail.component';
+
 
 @Component({
   selector: 'app-food-table',
@@ -26,17 +28,13 @@ export class FoodTableComponent implements AfterViewInit {
     this.fs.getFoods().subscribe(foods => {
       this.foods = foods;
       this.dataSource = new MatTableDataSource<Food>(this.foods);
-      console.log('Hello');
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
   }
 
-  getFoods(): void {
-    this.fs.getFoods().subscribe(foods => {
-      this.foods = foods;
-      this.dataSource = new MatTableDataSource<Food>(this.foods);
-    });
+  moveToDetail(id: string) {
+      window.location.href = '/detail/' + id;
   }
 
   ngAfterViewInit() {

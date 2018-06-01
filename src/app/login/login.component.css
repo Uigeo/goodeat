@@ -1,10 +1,7 @@
 
   .container{
-  
     background-color: #cccccc;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url("../../assets/image/food.jpg"); 
-    min-height: 800px;
-
+    min-height: 200px;
   }
 
   .login{
