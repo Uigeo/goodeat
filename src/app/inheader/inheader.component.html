@@ -13,6 +13,8 @@
     <ng-template #authed>
             <div fxLayout="row" fxLayoutAlign="end center">
                     <a mat-button (click)=auth.logout()>Logout</a>
+                    <a mat-button (click)="openAddFoodDialog()">AddFood</a>
+                    <a mat-button (click)="openFoodsDialog()">Foods</a>
                     <a routerLink="/mypage" mat-button>MyPage</a>
             </div>
     </ng-template>

@@ -1,6 +1,6 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, Inject } from '@angular/core';
 import { Food } from '../data';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AuthService } from '../auth.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { FoodService } from '../food.service';
@@ -19,7 +19,10 @@ export class FoodTableComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public auth: AuthService, public fs: FoodService, private afs: AngularFirestore) {
+  constructor(public auth: AuthService,
+              public fs: FoodService,
+              public dialogRef: MatDialogRef<FoodTableComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
     this.fs.getFoods().subscribe(foods => {
       this.foods = foods;
       this.dataSource = new MatTableDataSource<Food>(this.foods);
@@ -39,6 +42,10 @@ export class FoodTableComponent implements AfterViewInit {
   ngAfterViewInit() {
     // this.dataSource.paginator = this.paginator;
     // this.dataSource.sort = this.sort;
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
   applyFilter(filterValue: string) {

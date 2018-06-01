@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FoodService } from '../food.service';
 import { AuthService } from '../auth.service';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { Food } from '../data';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 
 @Component({
@@ -24,9 +25,18 @@ export class AddFoodComponent implements OnInit {
     class: ['btn', 'btn-primary']
   };
 
-  constructor( public fs: FoodService, public auth: AuthService, private afStorage: AngularFireStorage ) { }
+  constructor(
+    public fs: FoodService,
+    public auth: AuthService,
+    private afStorage: AngularFireStorage,
+    public dialogRef: MatDialogRef<AddFoodComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
   addFood(): void {
@@ -43,6 +53,7 @@ export class AddFoodComponent implements OnInit {
         victory: []
       }
     );
+    this.onNoClick();
   }
 
   imgUpload(event): void {

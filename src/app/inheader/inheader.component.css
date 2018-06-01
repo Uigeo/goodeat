@@ -2,20 +2,22 @@
 
 .logimg{
     height: 40px; 
-    margin-left: 30px;
+    
     margin-top: 15px;
     margin-bottom: 10px;
 }
 
 a{
     margin-left: 10px;
-    font-size: 120%;
+    font-size: 100%;
     color:rgb(255, 255, 255);
 }
 
 .tool{
     background-color: rgba(0, 0, 0, 0.493);
     box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    padding-left: 200px;
+    padding-right: 200px;
 }
 
 :host{

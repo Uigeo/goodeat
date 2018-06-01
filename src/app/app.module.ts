@@ -30,6 +30,7 @@ import { InheaderComponent } from './inheader/inheader.component';
 import { BattleComponent } from './battle/battle.component';
 import { NgDaumAddressModule } from 'ng2-daum-address';
 import { MyfoodTableComponent } from './myfood-table/myfood-table.component';
+import { FoodDetailComponent } from './food-detail/food-detail.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { MyfoodTableComponent } from './myfood-table/myfood-table.component';
     InheaderComponent,
     BattleComponent,
     MyfoodTableComponent,
+    FoodDetailComponent,
   ],
   imports: [
     BrowserModule,
