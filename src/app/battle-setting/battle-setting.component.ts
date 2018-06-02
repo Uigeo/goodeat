@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-
+import { AddFoodComponent } from '../add-food/add-food.component';
 
 @Component({
   selector: 'app-battle-setting',
@@ -28,14 +28,38 @@ export class BattleSettingComponent implements OnInit {
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      c1: [false],
+      c2: [false],
+      c3: [false],
+      c4: [false],
+      c5: [false],
+      c6: [false],
+      c7: [false],
+      c8: [false],
+      c9: [false],
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+      maxPrice: ['', Validators.required]
     });
     this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['', Validators.required]
+      person: ['', Validators.required]
     });
+  }
+
+  startBattle() {
+    console.log(this.firstFormGroup.value);
+    console.log(this.secondFormGroup.value.maxPrice);
+    console.log(this.thirdFormGroup.value.person);
+    let str_category = '';
+    const category = Object.values(this.firstFormGroup.value);
+    for (let index = 0; index < category.length; index++) {
+        if (category[index]) {
+          str_category += AddFoodComponent.categoryList[index];
+          str_category += '$';
+        }
+    }
+    window.location.href = '/battle/' + str_category + '/'
+    +  this.secondFormGroup.value.maxPrice + '/' + this.thirdFormGroup.value.person;
   }
 
   onNoClick(): void {

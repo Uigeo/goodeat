@@ -14,7 +14,7 @@ import { forEach } from '@firebase/util';
   styleUrls: ['./add-food.component.css']
 })
 export class AddFoodComponent implements OnInit {
-
+  static categoryList = ['한식', '중식', '일식', '양식', '분식', '매운', '디저트', '혼밥', '치킨'];
   task: AngularFireUploadTask;
   random_file_name: string;
   name: string;
@@ -57,13 +57,12 @@ export class AddFoodComponent implements OnInit {
   }
 
   onNgSubmit(userForm: NgForm) {
-    const categoryList = ['한식', '중식', '일식', '양식', '분식', '매운', '디저트', '혼밥'];
     console.log(userForm.value);
     const c = Object.values(userForm.value.category);
     const category = [];
     for (let index = 0; index < c.length; index++) {
        if (c[index]) {
-         category.push(categoryList[index]);
+         category.push(AddFoodComponent.categoryList[index]);
        }
     }
     console.log(category);
@@ -71,8 +70,8 @@ export class AddFoodComponent implements OnInit {
     this.fs.addFood(
       {
         name: userForm.value.name,
-        price: userForm.value.price,
-        portion: userForm.value.portion,
+        price:  parseInt(userForm.value.price, 10),
+        portion: parseInt( userForm.value.portion, 10),
         imgURL: this.img,
         category: category,
         address: this.address,

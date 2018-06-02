@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'foods', component: FoodTableComponent},
   { path: 'addfood', component: AddFoodComponent},
   { path: 'main', component: MainComponent},
-  { path: 'battle', component: BattleComponent},
+  { path: 'battle/:category/:max/:portion', component: BattleComponent},
   { path: 'myfood', component: MyfoodTableComponent},
   { path: 'battleset', component: BattleSettingComponent}
 ];

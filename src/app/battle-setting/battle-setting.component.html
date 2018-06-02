@@ -4,12 +4,17 @@
       <ng-template matStepLabel>카테고리</ng-template>
       <div fxLayout="column" fxLayoutAlign="center stretch" >
       <mat-form-field>
-        <input  matInput hidden name="한식" formControlName="firstCtrl">
+        <input matInput hidden  required>
         <section class="example-section">
-        <mat-checkbox formControlName="firstCtrl" required >한식</mat-checkbox>
-        <mat-checkbox formControlName="firstCtrl" required >중식</mat-checkbox>
-        <mat-checkbox formControlName="firstCtrl" required>양식</mat-checkbox>
-        <mat-checkbox formControlName="firstCtrl" required>일식</mat-checkbox>
+        <mat-checkbox  formControlName="c1" >한식</mat-checkbox>
+        <mat-checkbox formControlName="c2" >중식</mat-checkbox>
+        <mat-checkbox formControlName="c3">양식</mat-checkbox>
+        <mat-checkbox formControlName="c4">일식</mat-checkbox>
+        <mat-checkbox formControlName="c5">분식</mat-checkbox>
+        <mat-checkbox formControlName="c6">매운</mat-checkbox>
+        <mat-checkbox formControlName="c7">디저트</mat-checkbox>
+        <mat-checkbox formControlName="c8">혼밥</mat-checkbox>
+        <mat-checkbox formControlName="c9">치킨</mat-checkbox>
       </section>
       </mat-form-field>
     </div>
@@ -23,7 +28,7 @@
       <ng-template matStepLabel>가격</ng-template>
       <div fxLayout="column" fxLayoutAlign="center stretch" >
       <mat-form-field>
-        <input matInput placeholder="MAX" formControlName="secondCtrl" required>
+        <input matInput placeholder="MAX" formControlName="maxPrice" required>
       </mat-form-field>
     </div>
       <div>
@@ -37,7 +42,7 @@
         <ng-template matStepLabel>인원</ng-template>
         <div fxLayout="column" fxLayoutAlign="center stretch" >
         <mat-form-field>
-            <mat-select placeholder="Location" formControlName="thirdCtrl" required>
+            <mat-select placeholder="Person" formControlName="person" required>
                 <mat-option *ngFor="let food of foods" [value]="food.value">
                   {{ food.viewValue }}
                 </mat-option>
@@ -56,7 +61,7 @@
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button (click)="stepper.reset()">Reset</button>
-      <button mat-button (click)="stepper.reset()">Start</button>
+      <button mat-button (click)="startBattle()">Start</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

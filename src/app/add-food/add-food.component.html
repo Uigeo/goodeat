@@ -23,6 +23,7 @@
     <mat-checkbox  ngModel name='5' class="example-margin">매운</mat-checkbox>
     <mat-checkbox  ngModel name='6' class="example-margin">디저트</mat-checkbox>
     <mat-checkbox  ngModel name='7' class="example-margin">혼밥</mat-checkbox>
+    <mat-checkbox  ngModel name='8' class="example-margin">치킨</mat-checkbox>
   </section>
 
   <mat-form-field>
@@ -39,7 +40,7 @@
 
     <div class="filebox"> 
       <label for="ex_file">Upload Image</label> 
-      <input id="ex_file" type="file" (change)="imgUpload($event)" accept=".png,.jpg" />
+      <input id="ex_file" type="file" (change)="imgUpload($event)" accept=".png,.jpg,.jpeg" />
     </div>
 
     <button type="submit" mat-button color="primary">추가</button>
