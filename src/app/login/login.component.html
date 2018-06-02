@@ -1,13 +1,16 @@
 
-<div class="container" fxLayout="column" fxLayoutAlign="center stretch">
-
-  <div fxLayout="column" fxLayoutAlign="center center" >
-      <mat-card  class="login" fxLayout="column" fxLayoutAlign="center center">
-          <h1>Google Login</h1>
-          <button mat-raised-button color="warn" (click)="googleLogin()">Login With Google</button>
-        </mat-card>
+  <div class="col four">
+    <a class="btn btn-facebook"><i class="fa fa-facebook"></i>  Log in with Facebook</a>	
   </div>
-</div>
+  <br>
+  <div class="col four">
+    <a class="btn btn-twitter"><i class="fa fa-twitter"></i>  Log in with Twitter</a>
+  </div>
+  <br>
+  <div class="col four">
+    <a class="btn btn-google-plus" (click)="googleLogin()"><i class="fa fa-google-plus"></i>  Log in with Google+</a>	
+  </div>
+
 
   
 

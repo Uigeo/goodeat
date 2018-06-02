@@ -27,7 +27,6 @@ export interface User {
   gender?: string;
   email: string;
   age?: number;
-  //daum지도 때 필요함
   zip?: string;
   addr?: string;
   addrEng?: string;
@@ -46,7 +45,7 @@ export interface Food {
   store: string;
   register: string;
   price: number;
-  category: {};
+  category: string[];
   address?: any;
   portion: number;
   grade?: number;

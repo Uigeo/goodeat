@@ -1,7 +1,7 @@
 <mat-toolbar class="tool"  fxLayout="row" fxLayoutAlign="space-between center">
-    <img src="../../assets/image/logo_B.png" class="logimg" srcset="">
+        <a routerLink="/main"><img src="../../assets/image/logo_B.png" class="logimg" srcset=""></a>
     <div *ngIf="auth.user | async; then authed else guest">
-
+        
     </div>
 
     <ng-template #guest>

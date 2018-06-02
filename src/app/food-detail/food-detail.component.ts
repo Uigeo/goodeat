@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Input } from '@angular/core';
 import { FoodService } from '../food.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
@@ -14,7 +14,7 @@ import { Location } from '@angular/common';
 })
 export class FoodDetailComponent implements OnInit {
 
-  food: Food;
+  @Input() food: Food;
   id: string;
 
   constructor(
@@ -25,11 +25,15 @@ export class FoodDetailComponent implements OnInit {
 
   getFood(): void {
       this.id = this.route.snapshot.paramMap.get('id');
-      this.fs.getFood(this.id).subscribe(food => {console.log(food); this.food = food;} );
+      this.fs.getFood(this.id).subscribe(food => {console.log(food); this.food = food; } );
   }
 
   ngOnInit(): void {
     this.getFood();
+  }
+
+  updateFood() {
+    this.fs.updateFood( this.id , this.food);
   }
 
 }

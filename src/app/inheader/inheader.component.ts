@@ -39,7 +39,7 @@ export class InheaderComponent implements OnInit {
 
   openLoginDialog(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
-      width: '600px'
+      width: '400px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

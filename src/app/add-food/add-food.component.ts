@@ -4,6 +4,8 @@ import { AuthService } from '../auth.service';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { Food } from '../data';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { NgForm } from '@angular/forms';
+import { forEach } from '@firebase/util';
 
 
 @Component({
@@ -12,6 +14,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./add-food.component.css']
 })
 export class AddFoodComponent implements OnInit {
+
   task: AngularFireUploadTask;
   random_file_name: string;
   name: string;
@@ -19,7 +22,6 @@ export class AddFoodComponent implements OnInit {
   store: string;
   img: string;
   portion: number;
-  c1 = false; c2 = false; c3 = false; c4 = false;
   address: any;
   daumAddressOptions =  {
     class: ['btn', 'btn-primary']
@@ -39,23 +41,6 @@ export class AddFoodComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  addFood(): void {
-    this.fs.addFood(
-      {
-        name: this.name,
-        price: this.price,
-        portion: this.portion,
-        imgURL: this.img,
-        category: {Kr: this.c1, Ch: this.c2, Jp: this.c3, Ws: this.c4},
-        address: this.address,
-        store: this.store,
-        register: this.auth.userid,
-        victory: []
-      }
-    );
-    this.onNoClick();
-  }
-
   imgUpload(event): void {
     this.random_file_name = Math.random().toString(36).substring(2);
     this.task = this.afStorage.ref('image/' + this.random_file_name).put(event.target.files[0]);
@@ -69,5 +54,33 @@ export class AddFoodComponent implements OnInit {
   setDaumAddressApi(data) {
     this.address = data;
     console.log(data);
+  }
+
+  onNgSubmit(userForm: NgForm) {
+    const categoryList = ['한식', '중식', '일식', '양식', '분식', '매운', '디저트', '혼밥'];
+    console.log(userForm.value);
+    const c = Object.values(userForm.value.category);
+    const category = [];
+    for (let index = 0; index < c.length; index++) {
+       if (c[index]) {
+         category.push(categoryList[index]);
+       }
+    }
+    console.log(category);
+
+    this.fs.addFood(
+      {
+        name: userForm.value.name,
+        price: userForm.value.price,
+        portion: userForm.value.portion,
+        imgURL: this.img,
+        category: category,
+        address: this.address,
+        store: userForm.value.store,
+        register: this.auth.userid,
+        victory: []
+      }
+    );
+    this.onNoClick();
   }
 }
