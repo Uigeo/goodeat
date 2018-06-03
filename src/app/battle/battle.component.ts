@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FoodService } from '../food.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Food } from '../data';
+import { Food, Victory } from '../data';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { Food } from '../data';
   styleUrls: ['./battle.component.css']
 })
 export class BattleComponent implements OnInit {
-  foods: Food[];
+  final = false;
+  foods: any[];
   cat: string;
   portion: number;
   maxPrice: number;
@@ -26,6 +28,7 @@ export class BattleComponent implements OnInit {
   constructor(
     public fs: FoodService,
     private route: ActivatedRoute,
+    public auth: AuthService
     ) {
       this.getBattleFoods();
      }
@@ -72,8 +75,12 @@ export class BattleComponent implements OnInit {
     }
 
     // find final winner
-    if (this.numMatch <= 0) {
-
+    if (this.foods.length === 1) {
+      this.final = true;
+      const food = this.foods[0];
+      this.firstFood = this.foods[0];
+      food.victory.push( {user:  this.auth.userid, datetime: Date.now() } as Victory);
+      this.fs.updateFood(food.id, food);
     }
 
   }

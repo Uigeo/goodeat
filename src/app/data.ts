@@ -55,7 +55,7 @@ export interface Food {
 
 export interface Victory {
   user: string;
-  datetime: string;
+  datetime: number;
 }
 
 
