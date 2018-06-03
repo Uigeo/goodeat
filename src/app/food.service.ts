@@ -38,7 +38,6 @@ export class FoodService {
         const id = action.payload.doc.id;
         for (let index = 0; index < category.length; index++) {
           if (data.category.find(o => o === category[index])) {
-            console.log('uuu');
             return { id, ...data };
           }
         }

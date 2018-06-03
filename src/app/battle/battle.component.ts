@@ -15,6 +15,13 @@ export class BattleComponent implements OnInit {
   cat: string;
   portion: number;
   maxPrice: number;
+  numMatch: number;
+  round = 1;
+  first = 0;
+  second = 1;
+  length: number;
+  firstFood: any;
+  secondFood: any;
 
   constructor(
     public fs: FoodService,
@@ -29,14 +36,45 @@ export class BattleComponent implements OnInit {
     this.maxPrice = parseInt(this.route.snapshot.paramMap.get('portion'), 10);
 
     const category = this.cat.split('$');
-    console.log(category);
     category.pop();
 
     this.fs.getBattleFoods(category, this.maxPrice, this.portion).subscribe(foods => {
-      console.log(foods);
       this.foods = foods.filter(x => x !== undefined);
+      this.numMatch = foods.length - 1;
+      this.length = foods.length;
+      this.firstFood = this.foods[this.first];
+      this.secondFood = this.foods[this.second];
       console.log(this.foods);
+      console.log(this.firstFood);
+      console.log(this.secondFood);
     });
+  }
+
+  nextRound(winner: number) {
+    if (winner === 1) {
+      this.foods.splice(this.second, 1);
+    } else {
+      this.foods.splice(this.first, 1);
+    }
+
+    this.round += 1;
+    this.first += 1;
+    this.second += 1;
+    this.numMatch -= 1;
+    this.firstFood = this.foods[this.first];
+    this.secondFood = this.foods[this.second];
+
+
+    if (this.foods.length === Math.ceil(this.length / 2)) {
+      this.first = 0;
+      this.second = 1;
+      this.length = this.length / 2;
+    }
+
+    // find final winner
+    if (this.numMatch <= 0) {
+
+    }
 
   }
 
