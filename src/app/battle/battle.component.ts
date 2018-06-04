@@ -24,6 +24,7 @@ export class BattleComponent implements OnInit {
   length: number;
   firstFood: any;
   secondFood: any;
+  finalFood: any;
 
   constructor(
     public fs: FoodService,
@@ -44,12 +45,10 @@ export class BattleComponent implements OnInit {
     this.fs.getBattleFoods(category, this.maxPrice, this.portion).subscribe(foods => {
       this.foods = foods.filter(x => x !== undefined);
       this.numMatch = foods.length - 1;
-      this.length = foods.length;
+      this.length = this.foods.length;
       this.firstFood = this.foods[this.first];
       this.secondFood = this.foods[this.second];
       console.log(this.foods);
-      console.log(this.firstFood);
-      console.log(this.secondFood);
     });
   }
 
@@ -59,30 +58,32 @@ export class BattleComponent implements OnInit {
     } else {
       this.foods.splice(this.first, 1);
     }
+    console.log(this.foods);
 
     this.round += 1;
     this.first += 1;
     this.second += 1;
     this.numMatch -= 1;
-    this.firstFood = this.foods[this.first];
-    this.secondFood = this.foods[this.second];
 
-
-    if (this.foods.length === Math.ceil(this.length / 2)) {
+    if (this.foods.length === Math.ceil(this.length / 2) + 1 ) {
       this.first = 0;
       this.second = 1;
       this.length = this.length / 2;
     }
 
+    this.firstFood = this.foods[this.first];
+    this.secondFood = this.foods[this.second];
+
     // find final winner
     if (this.foods.length === 1) {
+
       this.final = true;
       const food = this.foods[0];
-      this.firstFood = this.foods[0];
+      console.log(food, 'Victory');
+      this.finalFood = food;
       food.victory.push( {user:  this.auth.userid, datetime: Date.now() } as Victory);
       this.fs.updateFood(food.id, food);
     }
-
   }
 
   ngOnInit() {
