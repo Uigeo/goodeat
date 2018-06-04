@@ -40,6 +40,10 @@ export class MyfoodTableComponent implements OnInit {
   ngOnInit() {
   }
 
+  moveToDetail(id: string) {
+    window.location.href = '/detail/' + id;
+  }
+
   getMyFood() {
     this.auth.user.subscribe(user => {
       const collection = this.afs.collection<Food>('foods', ref => ref.where('register', '==', user.uid));

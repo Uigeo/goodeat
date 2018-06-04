@@ -32,6 +32,7 @@ import { NgDaumAddressModule } from 'ng2-daum-address';
 import { MyfoodTableComponent } from './myfood-table/myfood-table.component';
 import { FoodDetailComponent } from './food-detail/food-detail.component';
 import { BattleSettingComponent } from './battle-setting/battle-setting.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { BattleSettingComponent } from './battle-setting/battle-setting.componen
     MyfoodTableComponent,
     FoodDetailComponent,
     BattleSettingComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
