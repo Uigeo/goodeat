@@ -34,6 +34,9 @@ import { BattleSettingComponent } from './battle-setting/battle-setting.componen
 import { FooterComponent } from './footer/footer.component';
 import { HistroyComponent } from './histroy/histroy.component';
 import { LankTableComponent } from './lank-table/lank-table.component';
+import {AdmCoreModule} from 'ngx-daum-map';
+
+
 
 
 @NgModule({
@@ -72,6 +75,8 @@ import { LankTableComponent } from './lank-table/lank-table.component';
     BrowserAnimationsModule,
     NgDaumAddressModule,
     ReactiveFormsModule,
+    
+    
   ],
   providers: [
     AuthService,
