@@ -1,45 +1,120 @@
-
-  <div class="round-banner" fxLayout="row"  fxLayoutAlign="center center">
-  <b>8 강</b>
-
+<ng-container *ngIf="final; then thenTemplate; else elseTemplate"></ng-container>
+<ng-template #thenTemplate>
+  <div class="round-banner" fxLayout="row"  fxLayoutAlign="center ">
+    <b> Victory </b>
   </div>
-
-
   <div class="card-container" fxLayout="row"  fxLayoutAlign="center center">
     <mat-card class="example-card box1" >
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>누렁이 보신탕</mat-card-title>
-        <mat-card-subtitle>20,000 원</mat-card-subtitle>
+        <mat-card-title>{{firstFood.name}}</mat-card-title>
+        <mat-card-subtitle>{{firstFood.category}}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <img mat-card-image  class="battleimg" src={{firstFood.imgURL}} >
       <mat-card-content>
         <p>
-          노란 보신탕집
+          price : {{firstFood.price}} <br>
+          address : {{firstFood.address.addr}} <br>
+       
+          portion : {{firstFood.portion}} <br>
         </p>
       </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)='nextRound(1)'>선택</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</ng-template>
+<ng-template #elseTemplate>
+  
+  <div class="round-banner" fxLayout="row"  fxLayoutAlign="center center">
+    <b> {{round}} Round</b>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center" >
+  <div class="card-container" fxLayout="row"  fxLayoutAlign="center center">
+    <mat-card class="example-card box1" >
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{firstFood.name}}</mat-card-title>
+        <mat-card-subtitle>{{firstFood.category}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image  class="battleimg" src={{firstFood.imgURL}} >
+      <mat-card-content>
+        <p>
+          price : {{firstFood.price}} <br>
+          address : {{firstFood.address.addr}} <br>
+       
+          portion : {{firstFood.portion}} <br>
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)='nextRound(1)'>선택</button>
+      </mat-card-actions>
     
     </mat-card>
+    </div>
+    <img class="versus" src="http://static1.comicvine.com/uploads/original/11112/111129141/5440487-1122329314-52705.png">
 
-    
-
-    <mat-card class="example-card box2">
+    <div class="card-container" fxLayout="row"  fxLayoutAlign="center center">
+      <mat-card class="example-card box1" >
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>흰둥이 보신탕</mat-card-title>
-          <mat-card-subtitle>30,000 원</mat-card-subtitle>
+          <mat-card-title>{{secondFood.name}}</mat-card-title>
+          <mat-card-subtitle>{{secondFood.category}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <img mat-card-image class="battleimg" src={{secondFood.imgURL}} >
         <mat-card-content>
           <p>
-            하얀 보신탕집
+            price : {{secondFood.price}} <br>
+            address : {{secondFood.address.addr}} <br>
+           
+            portion : {{secondFood.portion}} <br>
           </p>
         </mat-card-content>
-        
+        <mat-card-actions>
+          <button mat-button (click)='nextRound(2)'>선택</button>
+        </mat-card-actions>
       </mat-card>
-
-  <img fxLayoutAlign="center center" class="versus" src="http://static1.comicvine.com/uploads/original/11112/111129141/5440487-1122329314-52705.png">
-
-      
-
     </div>
+  </div>  
+</ng-template>
+
+
+
+
+
+<!-- <div *ngIf="final; then thenTemplate; else elseTemplate"></div> -->
+
+<!-- <ng-template #thenTemplate>
+  <div class="round-banner" fxLayout="row"  fxLayoutAlign="center ">
+    <b> Victory </b>
+  </div>
+  <div class="card-container" fxLayout="row"  fxLayoutAlign="center center">
+    <mat-card class="example-card box1" >
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{firstFood.name}}</mat-card-title>
+        <mat-card-subtitle>{{firstFood.category}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image  class="battleimg" src={{firstFood.imgURL}} >
+      <mat-card-content>
+        <p>
+          price : {{firstFood.price}} <br>
+          address : {{firstFood.address.addr}} <br>
+       
+          portion : {{firstFood.portion}} <br>
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)='nextRound(1)'>선택</button>
+      </mat-card-actions>
+    
+    </mat-card>
+</ng-template>
+
+<ng-template #elseTemplate>
+
+</ng-template> -->
+
+
+  

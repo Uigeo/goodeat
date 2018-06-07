@@ -1,8 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FoodService } from '../food.service';
 import { AuthService } from '../auth.service';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { Food } from '../data';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+import { NgForm } from '@angular/forms';
+import { forEach } from '@firebase/util';
 
 
 @Component({
@@ -11,6 +14,7 @@ import { Food } from '../data';
   styleUrls: ['./add-food.component.css']
 })
 export class AddFoodComponent implements OnInit {
+  static categoryList = ['한식', '중식', '일식', '양식', '분식', '매운', '디저트', '혼밥', '치킨'];
   task: AngularFireUploadTask;
   random_file_name: string;
   name: string;
@@ -18,40 +22,28 @@ export class AddFoodComponent implements OnInit {
   store: string;
   img: string;
   portion: number;
-  c1 = false;
-  c2 = false;
-  c3 = false;
-  c4 = false;
-  address: string;
+  address: any;
+  daumAddressOptions =  {
+    class: ['btn', 'btn-primary']
+  };
 
-  constructor( public fs: FoodService, public auth: AuthService, private afStorage: AngularFireStorage ) { }
+  
+  
+    
+
+  constructor(
+    
+    public fs: FoodService,
+    public auth: AuthService,
+    private afStorage: AngularFireStorage,
+    public dialogRef: MatDialogRef<AddFoodComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
   }
 
-  addFood(): void {
-    console.log(this.name);
-    console.log(this.price);
-    console.log(this.store);
-    console.log(this.portion);
-    console.log(this.img);
-    console.log(this.address);
-    console.log(this.c1);
-    console.log(this.c2);
-    console.log(this.c3);
-    console.log(this.c4);
-    this.fs.addFood(
-      {
-        name: this.name,
-        price: this.price,
-        portion: this.portion,
-        imgURL: this.img,
-        category: {Kr: this.c1, Ch: this.c2, Jp: this.c3, Ws: this.c4},
-        address: this.address,
-        store: this.store,
-        register: this.auth.userid
-      }
-    );
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
   imgUpload(event): void {
@@ -62,5 +54,40 @@ export class AddFoodComponent implements OnInit {
       console.log(url);
       this.img = url;
     });
+  }
+
+  setDaumAddressApi(data) {
+    this.address = data;
+    console.log(data);
+  }
+
+  onNgSubmit(userForm: NgForm) {
+
+    
+
+    console.log(userForm.value);
+    const c = Object.values(userForm.value.category);
+    const category = [];
+    for (let index = 0; index < c.length; index++) {
+       if (c[index]) {
+         category.push(AddFoodComponent.categoryList[index]);
+       }
+    }
+    console.log(category);
+
+    this.fs.addFood(
+      {
+        name: userForm.value.name,
+        price:  parseInt(userForm.value.price, 10),
+        portion: parseInt( userForm.value.portion, 10),
+        imgURL: this.img,
+        category: category,
+        address: this.address,
+        store: userForm.value.store,
+        register: this.auth.userid,
+        victory: []
+      }
+    );
+    this.onNoClick();
   }
 }

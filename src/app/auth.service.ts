@@ -10,13 +10,7 @@ import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { Time } from '@angular/common';
 import { LikeHero } from './hero-table/hero-table.component';
-import { User } from './data';
-
-
-
-
-
-
+import { User, Food } from './data';
 
 
 @Injectable()
@@ -27,6 +21,7 @@ export class AuthService {
   lo: Location;
   likeDoc: AngularFirestoreDocument<User>;
   likesCollection: AngularFirestoreCollection<LikeHero>;
+  foods: Observable<Food[]>;
 
   constructor(public afAuth: AngularFireAuth,
               private afs: AngularFirestore,
@@ -73,14 +68,12 @@ export class AuthService {
             uid: user.uid,
             email: user.email,
             gender: user.gender,
-            
             age: user.age,
             name: user.displayName,
             zip: user.zip,
             addr: user.addr,
             addrEng: user.addrEng,
             birth: user.birth,
-
           };
           return userRef.set(data);
         }
@@ -109,6 +102,20 @@ export class AuthService {
 
   userOn() {
     this.user.subscribe(user =>  this.userid = user.uid);
+  }
+
+  getMyFood() {
+    this.user.subscribe(user => {
+      const collection = this.afs.collection<Food>('foods', ref => ref.where('register', '==', this.userid));
+      this.foods = collection.snapshotChanges().map(actions => {
+        return actions.map(action => {
+          const data = action.payload.doc.data() as Food;
+          const id = action.payload.doc.id;
+          return { id, ...data };
+        });
+      });
+      return this.foods;
+    });
   }
 }
 

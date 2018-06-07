@@ -1,20 +1,44 @@
 <mat-toolbar class="tool"  fxLayout="row" fxLayoutAlign="space-between center">
-    <img src="../../assets/image/logo_black.png" class="logimg" srcset="">
-    <div *ngIf="auth.user | async; then authed else guest">
-
-    </div>
-
-    <ng-template #guest>
-            <div fxLayout="row" fxLayoutAlign="end center">
-                    <a mat-button routerLink="/login">Login</a>
-
+                <a routerLink="/main"><img src="../../assets/image/logo_B.png" class="logimg" srcset=""></a>
+            <div *ngIf="auth.user | async; then authed else guest">
+                
             </div>
-    </ng-template>
-    <ng-template #authed>
-            <div fxLayout="row" fxLayoutAlign="end center">
-                    <a mat-button (click)=auth.logout()>Logout</a>
-                    <a routerLink="/mypage" mat-button>MyPage</a>
-            </div>
-    </ng-template>
-
-</mat-toolbar>
+        
+            <ng-template #guest>
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                            <a mat-button (click)="openLoginDialog()">Login</a>
+        
+                    </div>
+            </ng-template>
+            <ng-template #authed>
+                        <div fxLayout="row" fxHide.lt-md fxLayoutAlign="end center">
+                                <a mat-button (click)=auth.logout()>Logout</a>
+                                <a mat-button (click)="openAddFoodDialog()">AddFood</a>
+                                <a mat-button (click)="openFoodsDialog()">Foods</a>
+                                <a routerLink="/mypage" mat-button>MyPage</a>
+                        </div>
+            
+                        <div fxHide.gt-sm>
+                            <button mat-icon-button [matMenuTriggerFor]="menu">
+                                    <mat-icon class="hamburger">more_vert</mat-icon>
+                                    </button>
+                                    <mat-menu #menu="matMenu">
+                                    <button mat-menu-item (click)=auth.logout()>
+                                            <mat-icon>highlight_off</mat-icon>
+                                            <span>Logout</span>
+                                    </button>
+                                    <button mat-menu-item (click)="openAddFoodDialog()">
+                                            <mat-icon>fastfood</mat-icon>
+                                            <span>AddFood</span>
+                                    </button>
+                                    <button mat-menu-item (click)="openFoodsDialog()">
+                                            <mat-icon>person</mat-icon>
+                                            <span>Mypage</span>
+                                    </button>
+                                    </mat-menu>
+            
+                        </div>
+                </ng-template>
+            
+        
+        </mat-toolbar>

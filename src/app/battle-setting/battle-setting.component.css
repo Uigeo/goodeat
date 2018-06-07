@@ -1,0 +1,25 @@
+
+.mat-slider-horizontal {
+    width: 450px;
+  }
+
+  .slider{
+    padding-top: 50px;
+    height: 50px;
+    font-size: 1px;
+    margin: 10px auto;
+  }
+  
+  .mat-slider-thumb-label {
+    transform: rotate(45deg) !important;
+    border-radius: 50% 50% 0 !important;
+  }
+  
+  .mat-slider-thumb {
+    transform: scale(0) !important;
+  }
+  
+  .mat-slider-thumb-label-text {
+    font-size:9px;
+    opacity: 1 !important;
+  }

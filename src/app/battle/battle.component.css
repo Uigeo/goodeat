@@ -1,16 +1,8 @@
 .example-card {
     background-color: #f1f1f1;
-    width: 500px;
-    margin: 2%;
-   
+    width: 400px;
   }
-  .card-container{
-    display: flex;
-    
- 
 
-
-  }
   .example-header-image {
     /*background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');*/
     background-size: cover;
@@ -18,12 +10,16 @@
 
 
 .versus{
-    position: absolute;
-    max-width: 15%;
+    position: relative;
+    max-width: 10%;
 }
 
 .round-banner{
+  margin-top: 100px;
   font-size : 4em;
-  
   color : #e03b3b;
+}
+
+.battleimg{
+  max-height: 300px;
 }

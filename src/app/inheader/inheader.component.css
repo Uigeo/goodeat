@@ -1,19 +1,27 @@
-
-
 .logimg{
-    height: 40px; 
-    margin-left: 30px;
-    margin-top: 15px;
+    height: 60px; 
+    
+    margin-top: 30px;
     margin-bottom: 10px;
 }
 
 a{
     margin-left: 10px;
-    font-size: 120%;
-    color: black;
+    font-size: 100%;
+    color:rgb(255, 255, 255);
 }
 
 .tool{
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.493);
     box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+:host{
+    width:100%;
+    position: fixed;
+}
+.hamburger { 
+    color: white;
 }

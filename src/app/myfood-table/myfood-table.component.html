@@ -5,6 +5,8 @@
 </div>
 
 
+
+
 <div class="example-container mat-elevation-z8">
 
   <mat-table [dataSource]="dataSource" matSort>
@@ -34,18 +36,15 @@
     </ng-container>
 
         <!-- Color Column -->
-    <ng-container matColumnDef="victory">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Victory </mat-header-cell>
-        <mat-cell *matCellDef="let row" > {{row.victory.length}} </mat-cell>
-     </ng-container>
-
+        <ng-container matColumnDef="victory">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Victory </mat-header-cell>
+            <mat-cell *matCellDef="let row" > {{row.victory.length}} </mat-cell>
+          </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="moveToDetail(row.id)">
     </mat-row>
   </mat-table>
-
-  
 
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>

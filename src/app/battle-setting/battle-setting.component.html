@@ -1,0 +1,86 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>카테고리</ng-template>
+      <div fxLayout="column" fxLayoutAlign="center stretch" >
+      <mat-form-field>
+        <input matInput hidden  required>
+        <section class="example-section">
+        <mat-checkbox  formControlName="c1" >한식</mat-checkbox>
+        <mat-checkbox formControlName="c2" >중식</mat-checkbox>
+        <mat-checkbox formControlName="c3">양식</mat-checkbox>
+        <mat-checkbox formControlName="c4">일식</mat-checkbox>
+        <mat-checkbox formControlName="c5">분식</mat-checkbox>
+        <br>
+        <br>
+        <mat-checkbox formControlName="c6">매운</mat-checkbox>
+        <mat-checkbox formControlName="c7">디저트</mat-checkbox>
+        <mat-checkbox formControlName="c8">혼밥</mat-checkbox>
+        <mat-checkbox formControlName="c9">치킨</mat-checkbox>
+        <br>
+        <br>
+      </section>
+      </mat-form-field>
+    </div>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>가격</ng-template>
+      <div fxLayout="column" fxLayoutAlign="center stretch" >
+        <section class ="slider">
+          <mat-slider
+          formControlName="maxPrice"
+          [(ngModel)]="value"
+          max=50000
+          min=1000
+          step=500
+          value="price"
+          thumbLabel = true;
+          >
+        </mat-slider>
+         <label>{{maxPrice}}</label>
+  </section>
+        
+    </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>인원</ng-template>
+        <div fxLayout="column" fxLayoutAlign="center stretch" >
+        <mat-form-field>
+            <mat-select placeholder="Person" formControlName="person" required>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{ food.viewValue }}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
+      </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are ready to battle?
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button (click)="startBattle()">Start</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

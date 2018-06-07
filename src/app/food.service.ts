@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/observable';
 import { of } from 'rxjs/observable/of';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Food } from './data';
+import { AddFoodComponent } from './add-food/add-food.component';
 
 
 @Injectable()
@@ -27,13 +28,46 @@ export class FoodService {
     return this.foods;
   }
 
+  getBattleFoods(category: string[], maxPrice: number, portion: number ): Observable<Food[]> {
+
+    const Ref = this.db.collection<Food>('foods', ref => ref.where('price', '>=', maxPrice));
+    //.where('portion', '<=', portion)
+    this.foods = Ref.snapshotChanges().map(actions => {
+      return actions.map(action => {
+        const data = action.payload.doc.data() as Food;
+        const id = action.payload.doc.id;
+        for (let index = 0; index < category.length; index++) {
+          if (data.category.find(o => o === category[index])) {
+            return { id, ...data };
+          }
+        }
+      });
+    });
+    return this.foods;
+  }
+
+  getMyFood(uid: string): Observable<Food[]> {
+    console.log(uid);
+    const collection = this.db.collection<Food>('foods', ref => ref.where('register', '==', uid));
+    this.foods = collection.snapshotChanges().map(actions => {
+      return actions.map(action => {
+        const data = action.payload.doc.data() as Food;
+        const id = action.payload.doc.id;
+        return { id, ...data };
+      });
+    });
+    return this.foods;
+  }
+
   getFood(id: string): Observable<Food> {
     this.foodDoc = this.db.doc<Food>('foods/' + id);
     return this.foodDoc.valueChanges();
   }
 
   addFood( food: Food ): void {
+    console.log('add Food');
     this.foodCollectionRef.add(food);
+    
   }
 
   deleteFood(id: string) {

@@ -26,11 +26,10 @@ export interface User {
   name: string;
   gender?: string;
   email: string;
-
-  //daum지도 때 필요함
-  zip? :string;
-  addr?:string;
-  addrEng?:string;
+  age?: number;
+  zip?: string;
+  addr?: string;
+  addrEng?: string;
   birth?: string;
 
   
@@ -46,8 +45,8 @@ export interface Food {
   store: string;
   register: string;
   price: number;
-  category: {};
-  address?: string;
+  category: string[];
+  address?: any;
   portion: number;
   grade?: number;
   imgURL?: string;
@@ -56,7 +55,7 @@ export interface Food {
 
 export interface Victory {
   user: string;
-  datetime: string;
+  datetime: number;
 }
 
 

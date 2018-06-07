@@ -31,8 +31,8 @@ import { MatButtonModule,
         MatTableModule,
         MatTabsModule,
         MatToolbarModule,
-        MatTableDataSource,
-        MatTooltipModule
+        MatTooltipModule,
+
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 
@@ -70,7 +70,9 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+
+
   ],
   declarations: [],
   exports: [
@@ -106,7 +108,8 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    CdkTableModule
+    CdkTableModule,
+
   ]
 })
 export class MaterialModule { }
