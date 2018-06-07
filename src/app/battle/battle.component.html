@@ -1,21 +1,22 @@
 <ng-container *ngIf="final; then thenTemplate; else elseTemplate"></ng-container>
 <ng-template #thenTemplate>
-  <div class="round-banner" fxLayout="row"  fxLayoutAlign="center ">
-    <b> Final Winner </b>
+  <div class="round-banner" fxLayout="row" fxLayoutAlign="center ">
+    <h2> Final Winner </h2>
   </div>
-  <div class="card-container" fxLayout="row"  fxLayoutAlign="center center">
-    <mat-card class="example-card box1" >
+  <div class="card-container" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="example-card box1">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{finalFood.name}}</mat-card-title>
         <mat-card-subtitle>{{finalFood.category}}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image  class="battleimg" src={{firstFood.imgURL}} >
+      <img mat-card-image class="battleimg" src={{firstFood.imgURL}}>
       <mat-card-content>
         <p>
-          price : {{finalFood.price}} <br>
-          address : {{finalFood.address.addr}} <br>
-          portion : {{finalFood.portion}} <br>
+          price : {{finalFood.price}}
+          <br> address : {{finalFood.address.addr}}
+          <br> portion : {{finalFood.portion}}
+          <br>
         </p>
       </mat-card-content>
       <mat-card-actions>
@@ -25,85 +26,95 @@
   </div>
 </ng-template>
 <ng-template #elseTemplate>
-  
-  <div class="round-banner" fxLayout="row"  fxLayoutAlign="center center">
-    <b> {{round}} Round</b>
-  </div>
-  <div fxLayout="row" fxLayoutAlign="center" >
-  <div class="card-container" fxLayout="row"  fxLayoutAlign="center center">
-    <mat-card class="example-card box1" >
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{firstFood.name}}</mat-card-title>
-        <mat-card-subtitle>{{firstFood.category}}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image  class="battleimg" src={{firstFood.imgURL}} >
-      <mat-card-content>
-        <p>
-          price : {{firstFood.price}} <br>
-          address : {{firstFood.address.addr}} <br>
-          portion : {{firstFood.portion}} <br>
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button (click)='nextRound(1)'>선택</button>
-      </mat-card-actions>
-    
-    </mat-card>
-    </div>
-    
-    <h2>VS</h2>
 
-    <div class="card-container" fxLayout="row"  fxLayoutAlign="center center">
-      <mat-card class="example-card box1" >
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{secondFood.name}}</mat-card-title>
-          <mat-card-subtitle>{{secondFood.category}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image class="battleimg" src={{secondFood.imgURL}} >
-        <mat-card-content>
-          <p>
-            price : {{secondFood.price}} <br>
-            address : {{secondFood.address.addr}} <br>
-            portion : {{secondFood.portion}} <br>
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button (click)='nextRound(2)'>선택</button>
-        </mat-card-actions>
-      </mat-card>
+  <div class="round-banner" fxLayout="row" fxLayoutAlign="center center">
+    <h1> {{round}} Round</h1>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div class="card-container" fxLayout="row" fxLayoutAlign="center center">
+      <a id="firstAni" class="button" (click)='nextRound(1)'>
+        <div class="example-2 card">
+          <div class="wrapper" [ngStyle]="setMyStyles1()">
+
+            <div class="header">
+              <div class="date">
+                <span class="day">₩{{firstFood.price}}</span>
+                <span class="month"></span>
+                <span class="year"></span>
+              </div>
+              <ul class="menu-content">
+                <li>
+                  <a class="fa fa-bookmark-o"></a>
+                </li>
+                <li>
+                  <a class="fa fa-heart-o">
+                    <span>18</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="fa fa-comment-o">
+                    <span>3</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="data">
+              <div class="content">
+                <span class="author">{{firstFood.store}}</span>
+                <h1 class="title">
+                  <a>{{firstFood.name}}</a>
+                </h1>
+                <p class="text">{{firstFood.category}}</p>
+                <p class='text'>{{firstFood.address.addr}}</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </a>
+
+
+
+      <!-- "background: url({{secondFood.imgURL}}) center/cover no-repeat" -->
+      <a id="secondAni" class="button" (click)='nextRound(2)'>
+        <div class="example-2 card">
+          <div class="wrapper" [ngStyle]="setMyStyles2()">
+            <div class="header">
+              <div class="date">
+                <span class="day">₩{{secondFood.price}}</span>
+                <span class="month"></span>
+                <span class="year"></span>
+              </div>
+              <ul class="menu-content">
+                <li>
+                  <a class="fa fa-bookmark-o"></a>
+                </li>
+                <li>
+                  <a class="fa fa-heart-o">
+                    <span>18</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="fa fa-comment-o">
+                    <span>3</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="data">
+              <div class="content">
+                <span class="author">{{secondFood.store}}</span>
+                <h1 class="title">
+                  <a>{{secondFood.name}}</a>
+                </h1>
+                <p class="text">{{secondFood.category}}</p>
+                <p class="text">{{secondFood.address.addr}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </a>
     </div>
-  </div>  
+  </div>
+
 </ng-template>
-
-
-
-
-
-<div class="example-2 card">
-  <div class="wrapper">
-    <div class="header">
-      <div class="date">
-        <span class="day">12</span>
-        <span class="month">Aug</span>
-        <span class="year">2016</span>
-      </div>
-      <ul class="menu-content">
-        <li>
-          <a href="#" class="fa fa-bookmark-o"></a>
-        </li>
-        <li><a href="#" class="fa fa-heart-o"><span>18</span></a></li>
-        <li><a href="#" class="fa fa-comment-o"><span>3</span></a></li>
-      </ul>
-    </div>
-    <div class="data">
-      <div class="content">
-        <span class="author">Jane Doe</span>
-        <h1 class="title"><a href="#">Stranger Things: The sound of the Upside Down</a></h1>
-        <p class="text">The antsy bingers of Netflix will eagerly anticipate the digital release of the Survive soundtrack, out today.</p>
-        <a href="#" class="button">Read mor</a>
-      </div>
-    </div>
-  </div>
-</div>

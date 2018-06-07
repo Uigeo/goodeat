@@ -36,12 +36,12 @@ import { HistroyComponent } from './histroy/histroy.component';
 import { LankTableComponent } from './lank-table/lank-table.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
-    
     DashboardComponent,
     LoginComponent,
     MypageComponent,
