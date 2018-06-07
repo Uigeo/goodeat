@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { FoodService } from '../food.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Food, Victory } from '../data';
 import { AuthService } from '../auth.service';
-
+import * as anime from 'animejs';
 
 @Component({
   selector: 'app-battle',
   templateUrl: './battle.component.html',
   styleUrls: ['./battle.component.css']
 })
-export class BattleComponent implements OnInit {
+export class BattleComponent implements AfterViewInit {
   final = false;
   foods: any[];
   cat: string;
@@ -25,6 +25,11 @@ export class BattleComponent implements OnInit {
   firstFood: any;
   secondFood: any;
   finalFood: any;
+
+  anime1: any;
+  anime2: any;
+  anime3: any;
+  anime4: any;
 
   constructor(
     public fs: FoodService,
@@ -58,7 +63,8 @@ export class BattleComponent implements OnInit {
     } else {
       this.foods.splice(this.first, 1);
     }
-    console.log(this.foods);
+
+    this.backAni();
 
     this.round += 1;
     this.first += 1;
@@ -84,9 +90,86 @@ export class BattleComponent implements OnInit {
       this.fs.updateFood(food.id, food);
       this.auth.addHistory(food.id, food, Date.now());
     }
+
+    setTimeout(function() {
+      this.anime1 = anime({
+        targets: '#firstAni',
+        translateX: 400,
+        duration: 2000
+      });
+
+      this.anime2 = anime({
+        targets : '#secondAni',
+        translateX : -400,
+        duration: 2000
+      });
+
+      this.anime1.play();
+      this.anime2.play();
+    }, 1000);
+
   }
 
-  ngOnInit() {
+  setMyStyles1() {
+    const styles = {
+      'background': `url(\'${this.firstFood.imgURL}\') center/cover no-repeat`
+    };
+    return styles;
   }
+
+  setMyStyles2() {
+    const styles = {
+      'background': `url(\'${this.secondFood.imgURL}\') center/cover no-repeat`
+    };
+    return styles;
+  }
+
+  ngAfterViewInit() {
+
+
+
+
+    console.log('play');
+    this.startAni();
+
+  }
+
+  startAni() {
+    this.anime1 = anime({
+      targets: '#firstAni',
+      translateX: 400,
+      duration: 2000
+    });
+
+    this.anime2 = anime({
+      targets : '#secondAni',
+      translateX : -400,
+      duration: 2000
+    });
+
+    this.anime1.play();
+    this.anime2.play();
+  }
+
+  backAni() {
+
+    this.anime1 = anime({
+      targets: '#firstAni',
+      translateX: -400,
+      duration: 2000
+    });
+
+    this.anime2 = anime({
+      targets : '#secondAni',
+      translateX : 400,
+      duration: 2000
+    });
+
+    this.anime1.play();
+    this.anime2.play();
+
+    console.log("back");
+  }
+
 
 }

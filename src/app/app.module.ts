@@ -39,12 +39,12 @@ import {AdmCoreModule} from 'ngx-daum-map';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
-    
     DashboardComponent,
     LoginComponent,
     MypageComponent,
