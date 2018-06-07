@@ -67,6 +67,7 @@ export class FoodService {
   addFood( food: Food ): void {
     console.log('add Food');
     this.foodCollectionRef.add(food);
+    
   }
 
   deleteFood(id: string) {

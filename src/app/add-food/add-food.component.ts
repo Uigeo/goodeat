@@ -3,7 +3,7 @@ import { FoodService } from '../food.service';
 import { AuthService } from '../auth.service';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { Food } from '../data';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { NgForm } from '@angular/forms';
 import { forEach } from '@firebase/util';
 
@@ -27,7 +27,12 @@ export class AddFoodComponent implements OnInit {
     class: ['btn', 'btn-primary']
   };
 
+  
+  
+    
+
   constructor(
+    
     public fs: FoodService,
     public auth: AuthService,
     private afStorage: AngularFireStorage,
@@ -57,6 +62,9 @@ export class AddFoodComponent implements OnInit {
   }
 
   onNgSubmit(userForm: NgForm) {
+
+    
+
     console.log(userForm.value);
     const c = Object.values(userForm.value.category);
     const category = [];

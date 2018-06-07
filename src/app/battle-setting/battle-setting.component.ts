@@ -2,13 +2,20 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AddFoodComponent } from '../add-food/add-food.component';
+import {ViewEncapsulation} from '@angular/core';
+
 
 @Component({
   selector: 'app-battle-setting',
   templateUrl: './battle-setting.component.html',
-  styleUrls: ['./battle-setting.component.css']
+  styleUrls: ['./battle-setting.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class BattleSettingComponent implements OnInit {
+  max = 50000;
+  step =500;
+  value =1000;
+
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;

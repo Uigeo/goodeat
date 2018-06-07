@@ -2,7 +2,7 @@
    <h1>음식추가</h1>
   <form class="option-cards" #f="ngForm" (ngSubmit)="onNgSubmit(f)">
   <mat-form-field>
-    <input matInput ngModel name='name' placeholder="Food Name">
+    <input matInput ngModel name='name'  placeholder="Food Name">
   </mat-form-field>
   <br>
   <mat-form-field>
@@ -15,10 +15,12 @@
   <br>
   <label class="example-margin">카테고리:</label><br>
   <section ngModelGroup="category" class="example-section">
+    <br>
     <mat-checkbox  ngModel name='0' class="example-margin">한식</mat-checkbox>
     <mat-checkbox  ngModel name='1' class="example-margin">중식</mat-checkbox>
     <mat-checkbox  ngModel name='2' class="example-margin">일식</mat-checkbox>
     <mat-checkbox  ngModel name='3' class="example-margin">양식</mat-checkbox>
+    <br><br>
     <mat-checkbox  ngModel name='4' class="example-margin">분식</mat-checkbox>
     <mat-checkbox  ngModel name='5' class="example-margin">매운</mat-checkbox>
     <mat-checkbox  ngModel name='6' class="example-margin">디저트</mat-checkbox>
@@ -27,7 +29,7 @@
   </section>
 
   <mat-form-field>
-    <mat-select ngModel  name='portion' placeholder="Select">
+    <mat-select ngModel  name='portion' placeholder="Portion">
       <mat-option  value=1>1인분</mat-option>
       <mat-option  value=2>2인분</mat-option>
       <mat-option  value=3>3인분</mat-option>
@@ -35,8 +37,11 @@
       <mat-option  value=5>5인분</mat-option>
     </mat-select>
   </mat-form-field>
-
+  <br>
+  <label>주소 입력 :</label>
   <btn-daum-address (result)="setDaumAddressApi($event)" [options]="daumAddressOptions"></btn-daum-address>
+  <br>
+  <br>
 
     <div class="filebox"> 
       <label for="ex_file">Upload Image</label> 

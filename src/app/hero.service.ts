@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Hero } from './data';
 import { Observable } from 'rxjs/observable';
 import { of } from 'rxjs/observable/of';
-
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 
 @Injectable()

@@ -31,7 +31,6 @@ export interface User {
   addr?: string;
   addrEng?: string;
   birth?: string;
-  today?: any;
 }
 
 export interface History {

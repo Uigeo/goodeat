@@ -7,20 +7,35 @@ footer{
 }
 
 h2{
-    margin-left:20%;
-    margin-right:20%;
+    
     font-size: 50px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .img{
-    height: 400px;
-    margin-left:20%;
-    margin-right: 80px;
+    
+    min-height: 300px;
+    width: 300px;
+   
+   align-self: center;
+    
 }
 
 p{
     margin-top:0;
     width: 800px;
     margin-right:20%;
+    
+}
+
+.desc{
+    
+    line-height: 50px;
+    display: flex;
+    font-size : 20px;
+ 
+}
+.box{
+    height: 150%
+
 }

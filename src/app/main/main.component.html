@@ -1,14 +1,12 @@
+
 <div fxLayout="column" fxLayoutAlign="center stretch">
-<div class='container' fxLayout="row" fxLayoutAlign="space-evenly center">
-  <div id="background"  fxLayout="row" fxLayoutAlign="space-evenly end" >
+<div class='container' fxLayout="row" >
+ 
+  <div id="background"  fxLayout.gt-sm="row" fxLayout.lt-sm="column"   fxLayoutAlign="space-evenly center"   >
 
-    <img  class="maintxt" src="../../assets/image/main_text.png" alt="">
-
-    <div>
-    <img src="../../assets/image/arrow.png"  class="arrow" alt="">
-    <a><img class="stamp" src="../../assets/image/ohmuckji.png" alt="" (click)="openDialog()"></a>
-    </div>
-</div>
+    <img  fxFlex="50" fxFlex.lt-sm="250px" class="maintxt" src="../../assets/image/main_text.png" alt="">
+    <a><img  fxFlex="50" fxFlex.lt-sm="250px" class="stamp" src="../../assets/image/ohmuckji.png" alt="" (click)="openDialog()"></a>
+  </div>
 </div>
 <app-footer></app-footer>
 </div>

@@ -11,10 +11,14 @@
         <mat-checkbox formControlName="c3">양식</mat-checkbox>
         <mat-checkbox formControlName="c4">일식</mat-checkbox>
         <mat-checkbox formControlName="c5">분식</mat-checkbox>
+        <br>
+        <br>
         <mat-checkbox formControlName="c6">매운</mat-checkbox>
         <mat-checkbox formControlName="c7">디저트</mat-checkbox>
         <mat-checkbox formControlName="c8">혼밥</mat-checkbox>
         <mat-checkbox formControlName="c9">치킨</mat-checkbox>
+        <br>
+        <br>
       </section>
       </mat-form-field>
     </div>
@@ -23,13 +27,26 @@
       </div>
     </form>
   </mat-step>
+
+
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>가격</ng-template>
       <div fxLayout="column" fxLayoutAlign="center stretch" >
-      <mat-form-field>
-        <input matInput placeholder="MAX" formControlName="maxPrice" required>
-      </mat-form-field>
+        <section class ="slider">
+          <mat-slider
+          formControlName="maxPrice"
+          [(ngModel)]="value"
+          max=50000
+          min=1000
+          step=500
+          value="price"
+          thumbLabel = true;
+          >
+        </mat-slider>
+         <label>{{maxPrice}}</label>
+  </section>
+        
     </div>
       <div>
         <button mat-button matStepperPrevious>Back</button>
@@ -37,6 +54,8 @@
       </div>
     </form>
   </mat-step>
+
+
   <mat-step [stepControl]="thirdFormGroup">
       <form [formGroup]="thirdFormGroup">
         <ng-template matStepLabel>인원</ng-template>
