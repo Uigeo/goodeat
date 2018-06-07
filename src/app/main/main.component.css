@@ -32,6 +32,7 @@ h3 {
 .maintxt{
     height: auto;
     min-width: 100px;
+    max-width: 200px;
     width: auto;
     margin-bottom: 10px;
    
@@ -39,10 +40,10 @@ h3 {
 }
 
 .stamp{
-   
+    max-width: 100px;
     height: auto;
     width: auto;
-    min-width: 100px;
+    min-width: 70px;
   
 }
 
