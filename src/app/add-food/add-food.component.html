@@ -1,20 +1,36 @@
 <div class="example-container">
    <h1>음식추가</h1>
-  <form class="option-cards" #f="ngForm" (ngSubmit)="onNgSubmit(f)">
+  <form class="option-cards" #f="ngForm"   (ngSubmit)="onNgSubmit(f)" novalidate>
   <mat-form-field>
-    <input matInput ngModel name='name'  placeholder="Food Name">
+    <input matInput ngModel name='name'  placeholder="Food Name" required>
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput ngModel name='price'  placeholder="Price">
+    <input matInput ngModel name='price'  placeholder="Price" required>
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput ngModel name='store' placeholder="Store Name">
+    <mat-select ngModel  name='portion' placeholder="Portion" required>
+      <mat-option  value=1>1인분</mat-option>
+      <mat-option  value=2>2인분</mat-option>
+      <mat-option  value=3>3인분</mat-option>
+      <mat-option  value=4>4인분</mat-option>
+      <mat-option  value=5>5인분</mat-option>
+    </mat-select>
   </mat-form-field>
   <br>
-  <label class="example-margin">카테고리:</label><br>
-  <section ngModelGroup="category" class="example-section">
+  <mat-form-field>
+    <input matInput ngModel name='store' placeholder="Store Name" required>
+  </mat-form-field>
+  <br>
+  <label>주소 입력 :</label>
+  <label *ngIf="addr">{{this.address.addr}}</label>
+  <btn-daum-address (result)="setDaumAddressApi($event)" [options]="daumAddressOptions" required #addr></btn-daum-address>
+
+  <br>
+  <br>
+  <label class="example-margin">카테고리:</label>
+  <section ngModelGroup="category"  class="example-section" required>
     <br>
     <mat-checkbox  ngModel name='0' class="example-margin">한식</mat-checkbox>
     <mat-checkbox  ngModel name='1' class="example-margin">중식</mat-checkbox>
@@ -28,27 +44,18 @@
     <mat-checkbox  ngModel name='8' class="example-margin">치킨</mat-checkbox>
   </section>
 
-  <mat-form-field>
-    <mat-select ngModel  name='portion' placeholder="Portion">
-      <mat-option  value=1>1인분</mat-option>
-      <mat-option  value=2>2인분</mat-option>
-      <mat-option  value=3>3인분</mat-option>
-      <mat-option  value=4>4인분</mat-option>
-      <mat-option  value=5>5인분</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <br>
-  <label>주소 입력 :</label>
-  <btn-daum-address (result)="setDaumAddressApi($event)" [options]="daumAddressOptions"></btn-daum-address>
-  <br>
+
   <br>
 
     <div class="filebox"> 
-      <label for="ex_file">Upload Image</label> 
-      <input id="ex_file" type="file" (change)="imgUpload($event)" accept=".png,.jpg,.jpeg" />
+      <label for="ex_file">사진 등록: </label> 
+      <input id="ex_file" type="file" (change)="imgUpload($event)" accept=".png,.jpg,.jpeg" requiredFile/>
+            
     </div>
+    <br>
 
-    <button type="submit" mat-button color="primary">추가</button>
+    <button mat-raised-button type="submit" mat-button color="primary" [disabled]="f.form.invalid || !this.img ||!this.address"  >추가</button>
+    
   </form>
     
 

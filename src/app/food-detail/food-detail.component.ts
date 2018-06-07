@@ -36,4 +36,5 @@ export class FoodDetailComponent implements OnInit {
     this.fs.updateFood( this.id , this.food);
   }
 
+
 }

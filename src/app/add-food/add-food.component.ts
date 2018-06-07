@@ -5,6 +5,9 @@ import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage'
 import { Food } from '../data';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { NgForm } from '@angular/forms';
+
+
+
 import { forEach } from '@firebase/util';
 
 
@@ -22,17 +25,17 @@ export class AddFoodComponent implements OnInit {
   store: string;
   img: string;
   portion: number;
-  address: any;
+  address: any ="";
   daumAddressOptions =  {
     class: ['btn', 'btn-primary']
   };
 
-  
+  fileContent:any;
   
     
 
   constructor(
-    
+    public snackBar : MatSnackBar,
     public fs: FoodService,
     public auth: AuthService,
     private afStorage: AngularFireStorage,
@@ -47,6 +50,7 @@ export class AddFoodComponent implements OnInit {
   }
 
   imgUpload(event): void {
+    
     this.random_file_name = Math.random().toString(36).substring(2);
     this.task = this.afStorage.ref('image/' + this.random_file_name).put(event.target.files[0]);
     const downloadURL = this.task.downloadURL();
@@ -58,12 +62,18 @@ export class AddFoodComponent implements OnInit {
 
   setDaumAddressApi(data) {
     this.address = data;
+    
     console.log(data);
   }
-
+  
   onNgSubmit(userForm: NgForm) {
-
     
+    
+    
+
+    this.snackBar.open('Complete', 'x', {
+      duration: 1000
+    });
 
     console.log(userForm.value);
     const c = Object.values(userForm.value.category);
@@ -88,6 +98,8 @@ export class AddFoodComponent implements OnInit {
         victory: []
       }
     );
-    this.onNoClick();
+
+
+    this.dialogRef.close();
   }
 }
