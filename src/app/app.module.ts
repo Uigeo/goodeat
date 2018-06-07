@@ -33,6 +33,8 @@ import { MyfoodTableComponent } from './myfood-table/myfood-table.component';
 import { FoodDetailComponent } from './food-detail/food-detail.component';
 import { BattleSettingComponent } from './battle-setting/battle-setting.component';
 import { FooterComponent } from './footer/footer.component';
+import { HistroyComponent } from './histroy/histroy.component';
+import { LankTableComponent } from './lank-table/lank-table.component';
 
 
 @NgModule({
@@ -54,6 +56,8 @@ import { FooterComponent } from './footer/footer.component';
     FoodDetailComponent,
     BattleSettingComponent,
     FooterComponent,
+    HistroyComponent,
+    LankTableComponent,
   ],
   imports: [
     BrowserModule,

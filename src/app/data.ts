@@ -32,12 +32,12 @@ export interface User {
   addrEng?: string;
   birth?: string;
   today?: any;
-
 }
 
 export interface History {
-  datetime: string;
-  winner: string;
+  datetime: number;
+  winner: Food;
+  foodid: string;
 }
 
 export interface Food {
@@ -54,7 +54,7 @@ export interface Food {
 }
 
 export interface Victory {
-  user: string;
+  user: any;
   datetime: number;
 }
 

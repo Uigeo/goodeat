@@ -1,6 +1,6 @@
 /* Master Styles */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
 
 h1 {

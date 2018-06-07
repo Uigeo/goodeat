@@ -76,13 +76,13 @@ export class BattleComponent implements OnInit {
 
     // find final winner
     if (this.foods.length === 1) {
-
       this.final = true;
       const food = this.foods[0];
       console.log(food, 'Victory');
       this.finalFood = food;
-      food.victory.push( {user:  this.auth.userid, datetime: Date.now() } as Victory);
+      food.victory.push( {user:  this.auth.userid , datetime: Date.now() } as Victory);
       this.fs.updateFood(food.id, food);
+      this.auth.addHistory(food.id, food, Date.now());
     }
   }
 

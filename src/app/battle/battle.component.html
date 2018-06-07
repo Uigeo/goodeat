@@ -81,38 +81,29 @@
 
 
 
-<!-- <div *ngIf="final; then thenTemplate; else elseTemplate"></div> -->
-
-<!-- <ng-template #thenTemplate>
-  <div class="round-banner" fxLayout="row"  fxLayoutAlign="center ">
-    <b> Victory </b>
+<div class="example-2 card">
+  <div class="wrapper">
+    <div class="header">
+      <div class="date">
+        <span class="day">12</span>
+        <span class="month">Aug</span>
+        <span class="year">2016</span>
+      </div>
+      <ul class="menu-content">
+        <li>
+          <a href="#" class="fa fa-bookmark-o"></a>
+        </li>
+        <li><a href="#" class="fa fa-heart-o"><span>18</span></a></li>
+        <li><a href="#" class="fa fa-comment-o"><span>3</span></a></li>
+      </ul>
+    </div>
+    <div class="data">
+      <div class="content">
+        <span class="author">Jane Doe</span>
+        <h1 class="title"><a href="#">Stranger Things: The sound of the Upside Down</a></h1>
+        <p class="text">The antsy bingers of Netflix will eagerly anticipate the digital release of the Survive soundtrack, out today.</p>
+        <a href="#" class="button">Read mor</a>
+      </div>
+    </div>
   </div>
-  <div class="card-container" fxLayout="row"  fxLayoutAlign="center center">
-    <mat-card class="example-card box1" >
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{firstFood.name}}</mat-card-title>
-        <mat-card-subtitle>{{firstFood.category}}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image  class="battleimg" src={{firstFood.imgURL}} >
-      <mat-card-content>
-        <p>
-          price : {{firstFood.price}} <br>
-          address : {{firstFood.address.addr}} <br>
-       
-          portion : {{firstFood.portion}} <br>
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button (click)='nextRound(1)'>선택</button>
-      </mat-card-actions>
-    
-    </mat-card>
-</ng-template>
-
-<ng-template #elseTemplate>
-
-</ng-template> -->
-
-
-  
+</div>

@@ -10,17 +10,20 @@ import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { Time } from '@angular/common';
 import { LikeHero } from './hero-table/hero-table.component';
-import { User, Food } from './data';
+import { User, Food, History } from './data';
 
 
 @Injectable()
 export class AuthService {
   user: Observable<User>;
   likes: Observable<LikeHero[]>;
+  history: Observable<History[]>;
   userid: string;
   lo: Location;
   likeDoc: AngularFirestoreDocument<User>;
+  historyDoc: AngularFirestoreDocument<User>;
   likesCollection: AngularFirestoreCollection<LikeHero>;
+  historyCollection: AngularFirestoreDocument<User>;
   foods: Observable<Food[]>;
 
   constructor(public afAuth: AngularFireAuth,
@@ -31,15 +34,6 @@ export class AuthService {
           console.log('1');
           this.userid = user.uid;
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-        } else {
-          return of(null);
-        }
-      });
-      this.likes = this.afAuth.authState.switchMap( user => {
-        if (user) {
-          console.log('2');
-          const docref = this.afs.doc<User>(`users/${user.uid}`);
-          return docref.collection<LikeHero>('likes', ref => ref.orderBy('date')).valueChanges();
         } else {
           return of(null);
         }
@@ -93,6 +87,26 @@ export class AuthService {
       this.userid = user.uid;
       this.likeDoc = this.afs.doc<User>(`users/${this.userid}`);
     this.likeDoc.collection('likes').add({hid: hid, heroName: heroName, date: Date.now()});
+    });
+  }
+
+  addHistory(foodid: string, food: Food, datetime: number) {
+    this.user.subscribe(user =>  {
+      this.userid = user.uid;
+      this.historyDoc = this.afs.doc<User>(`users/${user.uid}`);
+    this.historyDoc.collection('history').add({foodid: foodid, winner: food, datetime: Date.now()} as History );
+    });
+  }
+
+  getHistory() {
+    return this.afAuth.authState.switchMap( user => {
+      if (user) {
+        console.log('2_1');
+        const docref = this.afs.doc<User>(`users/${user.uid}`);
+        return docref.collection<History>('history', ref => ref.orderBy('date')).valueChanges();
+      } else {
+        return of(null);
+      }
     });
   }
 
