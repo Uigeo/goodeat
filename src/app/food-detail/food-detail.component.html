@@ -13,7 +13,7 @@
                 <mat-card-title>{{food.name}}</mat-card-title>
                 <mat-card-subtitle>{{food.category}}</mat-card-subtitle>
               </mat-card-header>
-              <img mat-card-image src='{{food.imgURL}}' alt="Photo of a Shiba Inu">
+              
               <mat-card-content>
                 <p>
                   Price : {{food.price}}<br>
@@ -21,19 +21,29 @@
                   Victory : {{food.victory.length}}<br>
                   address : {{food.address.addr}}<br>
                 </p>
+                <img mat-card-image src='{{food.imgURL}}' alt="Photo of a Shiba Inu">
+                <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick) ="onChoseLocation($event)">
+                  <agm-marker 
+                  [latitude]="latitude" 
+                  [longitude]="longitude"
+                  *ngIf = "locationChosen"
+                  ></agm-marker>
+                </agm-map>
 
               </mat-card-content>
             </mat-card>
         </div>
       </mat-tab>
       
+
+      <!--추후에 
       <mat-tab label="Tab 2">
         <ng-template mat-tab-label>
           <mat-icon>update</mat-icon>
         </ng-template>
         <div class="demo-tab-content">
-            
-              <!-- Modifiy -->
+            -->
+              <!-- Modifiy 
 
               <mat-card class="example-card">
                   <mat-card-header>
@@ -51,7 +61,7 @@
                       <btn-daum-address (result)="setDaumAddressApi($event)" [options]="daumAddressOptions" required #addr></btn-daum-address>
                      
                       <br>
-                     <!-- address : <input class="inputWidth" [(ngModel)]="food.address.addr" matInput placeholder="name"/><br>-->
+                    
                       
                     </p>
                   </mat-card-content>
@@ -63,7 +73,7 @@
 
                
         </div>  
-      </mat-tab>
+      </mat-tab>-->
     </mat-tab-group>
 </div>
 </div>
