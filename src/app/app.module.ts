@@ -35,6 +35,8 @@ import { HistroyComponent } from './histroy/histroy.component';
 import { LankTableComponent } from './lank-table/lank-table.component';
 import {AdmCoreModule} from 'ngx-daum-map';
 
+import { AgmCoreModule } from '@agm/core';
+
 
 
 
@@ -69,6 +71,11 @@ import {AdmCoreModule} from 'ngx-daum-map';
     BrowserAnimationsModule,
     NgDaumAddressModule,
     ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAIsytfcAeYgvYKOHmiXouR5RK7-CRXeBI'
+    })
+    
+    
   ],
   providers: [
     AuthService,

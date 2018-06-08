@@ -14,6 +14,10 @@ import { Location } from '@angular/common';
 })
 export class FoodDetailComponent implements OnInit {
 
+  latitude= 36.103175;
+  longitude= 129.388224;
+  locationChosen =true;
+
   @Input() food: Food;
   id: string;
 
@@ -36,5 +40,10 @@ export class FoodDetailComponent implements OnInit {
     this.fs.updateFood( this.id , this.food);
   }
 
-
+  onChoseLocation(event){
+    this.latitude = event.coords.lat;
+    this.longitude = event.coords.lng;
+    this.locationChosen = true;
+    console.log(event);
+  }
 }
