@@ -32,43 +32,6 @@
       
 
       
-      <mat-tab label="Tab 2">
-        <ng-template mat-tab-label>
-          <mat-icon>update</mat-icon>
-        </ng-template>
-        <div class="demo-tab-content">
-           
-              Modifiy 
-
-              <mat-card class="example-card">
-                  <mat-card-header>
-                    <div mat-card-avatar class="example-header-image"></div>
-                    <mat-card-title><input class="inputWidth" [(ngModel)]="food.name" matInput placeholder="name"/></mat-card-title>
-                    <mat-card-subtitle><input class="inputWidth" [(ngModel)]="food.category" matInput placeholder="name"/></mat-card-subtitle>
-                  </mat-card-header>
-                  <img mat-card-image src='{{food.imgURL}}' alt="Photo of a Shiba Inu">
-                  <mat-card-content>
-                    <p>
-                      Price : <input class="inputWidth" [(ngModel)]="food.price" matInput placeholder="name"/><br>
-                      Store : <input class="inputWidth" [(ngModel)]="food.store" matInput placeholder="name"/><br>
-                      Victory : {{food.victory.length}}<br>
-                      Address :  <label *ngIf="addr">{{food.address.addr}}</label>
-                      <btn-daum-address (result)="setDaumAddressApi($event)" [options]="daumAddressOptions" required #addr></btn-daum-address>
-                     
-                      <br>
-                    
-                      
-                    </p>
-                  </mat-card-content>
-
-                  <mat-card-actions>
-                      <button mat-rasied-button (click)="update()">Update</button>
-                    </mat-card-actions>
-                </mat-card>
-
-               
-        </div>  
-      </mat-tab>
     </mat-tab-group>
 </div>
 </div>

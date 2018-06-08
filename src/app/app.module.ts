@@ -71,6 +71,7 @@ import { AgmCoreModule } from '@agm/core';
     BrowserAnimationsModule,
     NgDaumAddressModule,
     ReactiveFormsModule,
+    AdmCoreModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAIsytfcAeYgvYKOHmiXouR5RK7-CRXeBI'
     })
