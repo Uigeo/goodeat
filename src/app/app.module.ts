@@ -74,8 +74,6 @@ import { AgmCoreModule } from '@agm/core';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAIsytfcAeYgvYKOHmiXouR5RK7-CRXeBI'
     })
-    
-    
   ],
   providers: [
     AuthService,

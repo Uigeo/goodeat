@@ -31,14 +31,14 @@
       </mat-tab>
       
 
-      <!--추후에 
+      
       <mat-tab label="Tab 2">
         <ng-template mat-tab-label>
           <mat-icon>update</mat-icon>
         </ng-template>
         <div class="demo-tab-content">
-            -->
-              <!-- Modifiy 
+           
+              Modifiy 
 
               <mat-card class="example-card">
                   <mat-card-header>
@@ -68,7 +68,7 @@
 
                
         </div>  
-      </mat-tab>-->
+      </mat-tab>
     </mat-tab-group>
 </div>
 </div>
@@ -76,27 +76,7 @@
 
 
 <div class="fond"> <span class="s1"> </span><span class="s2"></span></div>
-<div class="card">
-  <div class="thumbnail"><img class="left" src="{{food.imgURL}}"/></div>
-  <div class="right">
-    <h1>{{food.name}}</h1>
-    <div class="author"><img src="https://randomuser.me/api/portraits/men/95.jpg"/>
-      <h2>Igor MARTY</h2>
-    </div>
-    <div class="separator"></div>
-     <div class="info">
-      <br>
-      Price : {{food.price}}<br>
-      Store : {{food.store}}<br>
-      Victory : {{food.victory.length}}<br>
-      address : {{food.address.addr}}<br>
-    </div>
-  </div>
-  <h5>12</h5>
-  <h6>JANUARY</h6>
-  
-  <div class="fab"><i class="fa fa-arrow-down fa-3x"> </i></div>
-</div>
+
 <div class="mapContainer" >
 <agm-map [zoom]="17" [latitude]="latitude" [longitude]="longitude" (mapClick) ="onChoseLocation($event)">
     <agm-marker 
