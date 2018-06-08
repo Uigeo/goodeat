@@ -1,10 +1,14 @@
-<div fxLayout="column" fxLayoutAlign="center center">
+<div fxLayout="column" class="container" fxLayoutAlign="center center">
   <h2> 오늘 뭐 먹지?</h2>
   <hr>
-
-<div fxLayout.lt-md="column" class="box">
-  <a fxFlex="60"></a>
-  <p class="desc" fxFlex="60" fxLayoutAlign="space-evenly center" >
+  
+<div  class="box">
+  
+  
+  <div class="desc" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-evenly center" >
+    <img fxFlex=30  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhMPLep8GiyOsx2TG8LF7dL1gz32JqiXF7C8K0MUPSsQy4OQmW">
+    <div fxFlex=10></div>
+    <div fxFlex=60>
     박 태 성<br>
     <br>
     급식을 먹는 사람이 아니면<br>
@@ -13,20 +17,26 @@
     급식을 먹지 않는다면,,,<br>
     뭐 먹을지 고민이 된다면,,,<br>
     고민을 즐거움으로<br>
-   
-    </p>
+  </div>
+  </div>
 </div>
 <br>
 <br>
 <br>
-<footer fxLayout="column" fxLayoutAlign="center center" >
+<footer fxLayout="column" class="bottom" fxLayoutAlign="center center" >
   <div>
-      <mat-icon>fastfood</mat-icon>
-  </div>
-  <br>
-    <div>
-        © 2018 Goodeat 오늘 뭐 먹지?<br>
-        대표메일 : 21300267@handong.edu
+      <mat-icon>mail</mat-icon> 고객센터 : 
+      <a class="mail" href="mailto:taeseongDev@gmail.com" >메일보내기</a>
+      <br>
+      <br>
+      <mat-icon>people</mat-icon> 대표 : 박태성, 문의거
+      <br>
+      <mat-icon>home</mat-icon> 주소 : 경상북도 포항시 북구 한동로 558 한동대학교 오석관 318호
+      <br>
+      <br>
+      © 2018 Goodeat 오늘 뭐 먹지?
+      <br>
+      
     </div>
 
 </footer>

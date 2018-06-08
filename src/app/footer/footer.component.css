@@ -29,7 +29,7 @@ p{
 }
 
 .desc{
-    
+  
     line-height: 50px;
     display: flex;
     font-size : 20px;
@@ -38,4 +38,24 @@ p{
 .box{
     height: 150%
 
+}
+
+
+a:link { color: white; text-decoration: underline;}
+ a:visited { color: gray; text-decoration: none;}
+ a:hover { color: gray; text-decoration: underline;}
+
+
+ #pic {
+    height:100px;
+
+    color: white;
+    margin-top : 15%;
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.bottom{
+    padding: 10px;
 }
