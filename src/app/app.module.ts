@@ -4,11 +4,11 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { HeroService } from './hero.service';
+
+
+
 import { AppRoutingModule } from './/app-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { MaterialModule } from './material/material.module';
 import { LoginComponent } from './login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -19,12 +19,11 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './auth.service';
 import { MypageComponent } from './mypage/mypage.component';
-import { HeroTableComponent } from './hero-table/hero-table.component';
+
 import { FoodTableComponent } from './food-table/food-table.component';
 import { AddFoodComponent } from './add-food/add-food.component';
 import { FoodService } from './food.service';
 import { MainComponent } from './main/main.component';
-import { HeaderComponent } from './header/header.component';
 import { InheaderComponent } from './inheader/inheader.component';
 import { BattleComponent } from './battle/battle.component';
 import { NgDaumAddressModule } from 'ng2-daum-address';
@@ -45,16 +44,11 @@ import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent,
-    HeroDetailComponent,
-    DashboardComponent,
     LoginComponent,
     MypageComponent,
-    HeroTableComponent,
     FoodTableComponent,
     AddFoodComponent,
     MainComponent,
-    HeaderComponent,
     InheaderComponent,
     BattleComponent,
     MyfoodTableComponent,
@@ -85,7 +79,6 @@ import { AgmCoreModule } from '@agm/core';
   ],
   providers: [
     AuthService,
-    HeroService,
     FoodService,
   ],
   bootstrap: [AppComponent]

@@ -3,13 +3,10 @@
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../assets/image/foods.jpg"); 
     min-height: 800px;
     display: flex;
-    
-
     /* background-color: rgb(45, 107, 126); */
 }
 
 #background {
-  
     width:100%;
     color: white;
     margin-top : 15%;
@@ -32,17 +29,15 @@ h3 {
 .maintxt{
     height: auto;
     min-width: 100px;
+    max-width: 200px;
     width: auto;
     margin-bottom: 10px;
-   
-   
 }
 
 .stamp{
-   
+    max-width: 100px;
     height: auto;
     width: auto;
-    min-width: 100px;
-  
+    min-width: 70px;
 }
 

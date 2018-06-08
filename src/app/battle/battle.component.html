@@ -1,29 +1,46 @@
 <ng-container *ngIf="final; then thenTemplate; else elseTemplate"></ng-container>
 <ng-template #thenTemplate>
   <div class="round-banner" fxLayout="row" fxLayoutAlign="center ">
-    <h2> Final Winner </h2>
+    <h1> Final Winner </h1>
   </div>
-  <div class="card-container" fxLayout="row" fxLayoutAlign="center center">
-    <mat-card class="example-card box1">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{finalFood.name}}</mat-card-title>
-        <mat-card-subtitle>{{finalFood.category}}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image class="battleimg" src={{firstFood.imgURL}}>
-      <mat-card-content>
-        <p>
-          price : {{finalFood.price}}
-          <br> address : {{finalFood.address.addr}}
-          <br> portion : {{finalFood.portion}}
-          <br>
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button (click)='nextRound(1)'>선택</button>
-      </mat-card-actions>
-    </mat-card>
+  <div fxLayout="row" fxLayoutAlign="center start">
+  <div id="finalAni" class="example-2 card">
+    <div class="wrapper" [ngStyle]="setMyStylesFinal()">
+      <div class="header">
+        <div class="date">
+          <span class="day">₩{{finalFood.price}}</span>
+          <span class="month"></span>
+          <span class="year"></span>
+        </div>
+        <ul class="menu-content">
+          <li>
+            <a class="fa fa-bookmark-o"></a>
+          </li>
+          <li>
+            <a class="fa fa-heart-o">
+              <span>18</span>
+            </a>
+          </li>
+          <li>
+            <a class="fa fa-comment-o">
+              <span>3</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="data">
+        <div class="content">
+          <span class="author">{{finalFood.store}}</span>
+          <h1 class="title">
+            <a>{{finalFood.name}}</a>
+          </h1>
+          <p class="text">{{finalFood.category}}</p>
+          <p class="text">{{finalFood.address.addr}}</p>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 </ng-template>
 <ng-template #elseTemplate>
 

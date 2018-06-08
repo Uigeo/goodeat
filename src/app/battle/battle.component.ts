@@ -85,28 +85,40 @@ export class BattleComponent implements AfterViewInit {
       this.final = true;
       const food = this.foods[0];
       console.log(food, 'Victory');
+
+      setTimeout(function() {
+        this.anime1 = anime({
+          targets: '#finalAni',
+          translateY: 800,
+          direction: 'reverse'
+        });
+        this.anime1.play();
+      }, 1000);
+
       this.finalFood = food;
       food.victory.push( {user:  this.auth.userid , datetime: Date.now() } as Victory);
-      this.fs.updateFood(food.id, food);
-      this.auth.addHistory(food.id, food, Date.now());
+      if (this.auth.user) {
+        this.fs.updateFood(food.id, food);
+        this.auth.addHistory(food.id, food, Date.now());
+      }
+    } else {
+      setTimeout(function() {
+        this.anime1 = anime({
+          targets: '#firstAni',
+          translateX: 400,
+          duration: 2000
+        });
+        this.anime2 = anime({
+          targets : '#secondAni',
+          translateX : -400,
+          duration: 2000
+        });
+        this.anime1.play();
+        this.anime2.play();
+      }, 1000);
     }
 
-    setTimeout(function() {
-      this.anime1 = anime({
-        targets: '#firstAni',
-        translateX: 400,
-        duration: 2000
-      });
 
-      this.anime2 = anime({
-        targets : '#secondAni',
-        translateX : -400,
-        duration: 2000
-      });
-
-      this.anime1.play();
-      this.anime2.play();
-    }, 1000);
 
   }
 
@@ -124,11 +136,15 @@ export class BattleComponent implements AfterViewInit {
     return styles;
   }
 
+  setMyStylesFinal() {
+    const styles = {
+      'background': `url(\'${this.finalFood.imgURL}\') center/cover no-repeat`,
+
+    };
+    return styles;
+  }
+
   ngAfterViewInit() {
-
-
-
-
     console.log('play');
     this.startAni();
 
@@ -168,7 +184,6 @@ export class BattleComponent implements AfterViewInit {
     this.anime1.play();
     this.anime2.play();
 
-    console.log("back");
   }
 
 
