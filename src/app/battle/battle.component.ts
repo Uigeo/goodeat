@@ -89,7 +89,7 @@ export class BattleComponent implements AfterViewInit {
       setTimeout(function() {
         this.anime1 = anime({
           targets: '#finalAni',
-          translateY: -400,
+          translateY: 800,
           direction: 'reverse'
         });
         this.anime1.play();
@@ -97,8 +97,8 @@ export class BattleComponent implements AfterViewInit {
 
       this.finalFood = food;
       food.victory.push( {user:  this.auth.userid , datetime: Date.now() } as Victory);
-      this.fs.updateFood(food.id, food);
       if (this.auth.user) {
+        this.fs.updateFood(food.id, food);
         this.auth.addHistory(food.id, food, Date.now());
       }
     } else {
@@ -139,16 +139,12 @@ export class BattleComponent implements AfterViewInit {
   setMyStylesFinal() {
     const styles = {
       'background': `url(\'${this.finalFood.imgURL}\') center/cover no-repeat`,
-      'max-width' : '400px'
+
     };
     return styles;
   }
 
   ngAfterViewInit() {
-
-
-
-
     console.log('play');
     this.startAni();
 

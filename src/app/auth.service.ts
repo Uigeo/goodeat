@@ -9,20 +9,17 @@ import 'rxjs/add/operator/switchMap';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { Time } from '@angular/common';
-import { LikeHero } from './hero-table/hero-table.component';
 import { User, Food, History } from './data';
 
 
 @Injectable()
 export class AuthService {
   user: Observable<User>;
-  likes: Observable<LikeHero[]>;
   history: Observable<History[]>;
   userid: string;
   lo: Location;
   likeDoc: AngularFirestoreDocument<User>;
   historyDoc: AngularFirestoreDocument<User>;
-  likesCollection: AngularFirestoreCollection<LikeHero>;
   historyCollection: AngularFirestoreDocument<User>;
   foods: Observable<Food[]>;
 
@@ -110,9 +107,6 @@ export class AuthService {
     });
   }
 
-  getLikeHero() {
-    return this.likes;
-  }
 
   userOn() {
     this.user.subscribe(user =>  this.userid = user.uid);
