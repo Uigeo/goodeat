@@ -42,6 +42,8 @@ export class HistroyComponent implements OnInit {
       this.history = history;
       console.log(this.history, 'history');
       this.dataSource = new MatTableDataSource<History>(this.history);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
 }

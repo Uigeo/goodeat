@@ -98,9 +98,11 @@ export class AuthService {
   getHistory() {
     return this.afAuth.authState.switchMap( user => {
       if (user) {
-        console.log('2_1');
+
         const docref = this.afs.doc<User>(`users/${user.uid}`);
-        return docref.collection<History>('history', ref => ref.orderBy('date')).valueChanges();
+       docref.valueChanges().subscribe(doc => console.log(doc, 'getHistory') );
+
+        return docref.collection<History>('history', ref => ref.orderBy('datetime')).valueChanges();
       } else {
         return of(null);
       }
