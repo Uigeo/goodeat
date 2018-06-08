@@ -44,5 +44,6 @@ export class FoodDetailComponent implements OnInit {
     this.latitude = event.coords.lat;
     this.longitude = event.coords.lng;
     this.locationChosen = true;
+    console.log(event);
   }
 }
