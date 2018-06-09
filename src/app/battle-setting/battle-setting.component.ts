@@ -16,6 +16,7 @@ export class BattleSettingComponent implements OnInit {
   step =500;
   value =1000;
 
+
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;

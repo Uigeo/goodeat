@@ -32,11 +32,10 @@ import { FoodDetailComponent } from './food-detail/food-detail.component';
 import { BattleSettingComponent } from './battle-setting/battle-setting.component';
 import { FooterComponent } from './footer/footer.component';
 import { HistroyComponent } from './histroy/histroy.component';
-import { LankTableComponent } from './lank-table/lank-table.component';
+
 import {AdmCoreModule} from 'ngx-daum-map';
 
 import { AgmCoreModule } from '@agm/core';
-
 
 
 
@@ -56,7 +55,7 @@ import { AgmCoreModule } from '@agm/core';
     BattleSettingComponent,
     FooterComponent,
     HistroyComponent,
-    LankTableComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -18,6 +18,7 @@ export class BattleComponent implements AfterViewInit {
   portion: number;
   maxPrice: number;
   numMatch: number;
+  totalMatch: number;
   round = 1;
   first = 0;
   second = 1;
@@ -50,6 +51,7 @@ export class BattleComponent implements AfterViewInit {
     this.fs.getBattleFoods(category, this.maxPrice, this.portion).subscribe(foods => {
       this.foods = foods.filter(x => x !== undefined);
       this.numMatch = foods.length - 1;
+      this.totalMatch = foods.length -1;
       this.length = this.foods.length;
       this.firstFood = this.foods[this.first];
       this.secondFood = this.foods[this.second];

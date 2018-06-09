@@ -58,13 +58,7 @@ export class AuthService {
           const data: User = {
             uid: user.uid,
             email: user.email,
-            gender: user.gender,
-            age: user.age,
             name: user.displayName,
-            zip: user.zip,
-            addr: user.addr,
-            addrEng: user.addrEng,
-            birth: user.birth,
           };
           return userRef.set(data);
         }

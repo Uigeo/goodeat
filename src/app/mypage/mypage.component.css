@@ -7,6 +7,9 @@
   transform: translateX(-50%);
   padding-top: 40px;
   
+
+  
+
   margin-top: 100px;
 }
 
@@ -22,4 +25,8 @@
 
 .modi.input{
   width:100%
+}
+
+.host{
+  background-color: rgba(165, 217, 247, 0.473);
 }
