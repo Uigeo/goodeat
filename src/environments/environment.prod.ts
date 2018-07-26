@@ -1,12 +1,12 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: "AIzaSyCf4LqvspkfdAZqxb0OFIpfZ-hSnhqVwCA",
-    authDomain: "goodeat-4ffd5.firebaseapp.com",
-    databaseURL: "https://goodeat-4ffd5.firebaseio.com",
-    projectId: "goodeat-4ffd5",
-    storageBucket: "goodeat-4ffd5.appspot.com",
-    messagingSenderId: "501521340880"
+    apiKey: "AIzaSyBaaoAUm2Z7cML3SiNMUmLaVWe1HOhusQ0",
+    authDomain: "goodatme-539fd.firebaseapp.com",
+    databaseURL: "https://goodatme-539fd.firebaseio.com",
+    projectId: "goodatme-539fd",
+    storageBucket: "goodatme-539fd.appspot.com",
+    messagingSenderId: "156312023902"
   }
 };
 

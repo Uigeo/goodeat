@@ -1,5 +1,4 @@
 {
-
   "name": "final",
   "version": "0.0.0",
   "license": "MIT",
@@ -64,4 +63,3 @@
     "typescript": "~2.5.3"
   }
 }
-
